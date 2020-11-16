@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contratos\ICategoria.cs" />
+    <Compile Include="Contratos\IComprobanteDePago.cs" />
+    <Compile Include="Contratos\IGestorAccesoDatos.cs" />
+    <Compile Include="Contratos\ILineaDeVenta.cs" />
+    <Compile Include="Contratos\IProducto.cs" />
     <Compile Include="Entidades\Categoria.cs" />
     <Compile Include="Entidades\ComprobanteDePago.cs" />
     <Compile Include="Entidades\LineaDeVenta.cs" />

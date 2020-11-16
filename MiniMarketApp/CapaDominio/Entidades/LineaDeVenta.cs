@@ -50,6 +50,14 @@ namespace CapaDominio.Entidades
             set { precioTotal = value; }
         }
 
+        private ComprobanteDePago comprobanteDePago;
+
+        public ComprobanteDePago ComprobanteDePago
+        {
+            get { return comprobanteDePago}
+            set { comprobanteDePago = value; }
+        }
+
         private void calcularPrecioUnitario()
         {
             precioUnitario = producto.PrecioVenta;

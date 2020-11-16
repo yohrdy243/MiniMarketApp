@@ -41,7 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADO_SQLServer\CategoriaDao.cs" />
+    <Compile Include="ADO_SQLServer\ComprobanteDePagoDao.cs" />
+    <Compile Include="ADO_SQLServer\GestorSQL.cs" />
+    <Compile Include="ADO_SQLServer\LineaDeVentaDao.cs" />
+    <Compile Include="ADO_SQLServer\ProductoDao.cs" />
+    <Compile Include="FabricaDatos\FabricaAbstracta.cs" />
+    <Compile Include="FabricaDatos\FabricaSQLServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaDominio\CapaDominio.csproj">
+      <Project>{33f0ece6-d9fb-46bf-afcf-7212063e5e47}</Project>
+      <Name>CapaDominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

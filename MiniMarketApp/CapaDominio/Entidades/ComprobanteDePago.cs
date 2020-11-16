@@ -43,11 +43,11 @@ namespace CapaDominio.Entidades
             set { direccion = value; }
         }
 
-        private long numeroIdentidicacion;
-        public long NumeroIdentificacion
+        private long dni;
+        public long Dni
         {
-            get { return numeroIdentidicacion; }
-            set { numeroIdentidicacion = value; }
+            get { return dni; }
+            set { dni = value; }
         }
 
         private float precioTotal;
