@@ -47,7 +47,7 @@ namespace CapaDominio.Entidades
 
         public ComprobanteDePago ComprobanteDePago
         {
-            get { return comprobanteDePago}
+            get { return comprobanteDePago; }
             set { comprobanteDePago = value; }
         }
 
