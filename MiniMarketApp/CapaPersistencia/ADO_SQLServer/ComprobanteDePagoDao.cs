@@ -10,44 +10,67 @@ namespace CapaPersistencia.ADO_SQLServer
 {
     public class ComprobanteDePagoDao : IComprobanteDePago
     {
+        private GestorSQL gestorSQL;
+
+        public ComprobanteDePagoDao (IGestorAccesoDatos gestorSQL)
+        {
+            this.gestorSQL = (GestorSQL)gestorSQL;
+        }
         public ComprobanteDePago buscarComprobanteDePago(long idComprobanteDePago)
         {
-            throw new NotImplementedException();
+            String query = "select *from comprobanteDePago"+
+                           "where comprobanteDePago.idComprobante = idComprobante; ";
         }
 
         public List<ComprobanteDePago> buscarComprobanteDePagoPorDni(long dni)
         {
-            throw new NotImplementedException();
+            String query = "select *from comprobanteDePago"+
+                           "where comprobanteDePago.dni = dni; ";
         }
 
         public List<ComprobanteDePago> buscarComprobanteDePagoPorNombre(string nombre)
         {
-            throw new NotImplementedException();
+            String query = "select *from comprobanteDePago"+
+                           "where comprobanteDePago.nombre = nombre;";
+
         }
 
         public void crearComprobanteDePago(ComprobanteDePago comprobanteDePago)
         {
-            throw new NotImplementedException();
+            String query = "insert into comprobanteDePago(numeroComprobante,nombre,fecha,direccion,dni,igv,precioNeto,precioTotal"+
+                           "values(@numeroComprobante, @nombre, @fecha, @direccion, @dni, @igv, @precioNeto, @precioTotal)";
         }
 
         public void editarComprobante(ComprobanteDePago comprobanteDePago)
         {
-            throw new NotImplementedException();
+           String query = "update comprobanteDePago"+
+                             "set"+
+                                "nombre = @nombre,"+
+                                "fecha = @fecha,"+
+                                "direccion = @direccion,"+
+                                "dni = @dni,"+
+                                "igv = @igv,"+
+                                "precioNeto = @precioNeto,"+
+                                "precioTotal = @precioTotal"+
+                            "where comprobanteDePago.idComprobante = idComprobante; ";
+
         }
 
-        public void eliminarCategoria(long idCategoria)
+        public void eliminarComprobante(long idCategoria)
         {
-            throw new NotImplementedException();
+            String query = "delete from comprobanteDePago"+
+                           "where comprobanteDePago.idComprobante = idComprobante";
         }
 
         public List<ComprobanteDePago> listarComprobanteDePago()
         {
-            throw new NotImplementedException();
+            String query = "select *from comprobanteDePago";
         }
 
         public List<ComprobanteDePago> listarComprobanteDePagoPorFecha(DateTime fecha)
         {
-            throw new NotImplementedException();
+            String query = "select *from comprobanteDePago"+
+                           "where comprobanteDePago.fecha = fecha";
         }
     }
 }

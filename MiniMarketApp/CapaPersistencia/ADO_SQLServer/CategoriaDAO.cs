@@ -10,34 +10,46 @@ namespace CapaPersistencia.ADO_SQLServer
 {
     public class CategoriaDao : ICategoria
     {
+        private GestorSQL gestorSQL;
+
+        public CategoriaDao(IGestorAccesoDatos gestorSQL)
+        {
+            this.gestorSQL = (GestorSQL)gestorSQL;
+        }
         public Categoria buscarCategoria(long idCategoria)
         {
-            throw new NotImplementedException();
+            String query = "select * from categoria"+
+                           "where categoria.idCategoria = idCategoria; ";
         }
 
         public Categoria buscarCategoriaPorNombre(string nombre)
         {
-            throw new NotImplementedException();
+            String query = "select * from categoria"+
+                           "where categoria.nombreCategoria = nombreCategoria; ";
         }
 
         public void crearCategoria(Categoria categoria)
         {
-            throw new NotImplementedException();
+           String query = "insert into categoria(nombreCategoria)"+
+                          "values(@nombreCategoria); ";
         }
 
         public void editarCategoria(Categoria categoria)
         {
-            throw new NotImplementedException();
+           String query = "update categoria"+
+                          "set nombreCategoria = @nombreCategoria"+
+                          "where categoria.idCategoria = idCategoria; ";
         }
 
         public void eliminarCategoria(long idCategoria)
         {
-            throw new NotImplementedException();
+            String query = "delete from categoria"+
+                           "where categoria.idCategoria = idCategoria";
         }
 
         public List<Categoria> listarCategorias()
         {
-            throw new NotImplementedException();
+            String query = "select * from categoria;";
         }
     }
 }

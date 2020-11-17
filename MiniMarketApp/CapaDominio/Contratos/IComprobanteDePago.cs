@@ -16,6 +16,6 @@ namespace CapaDominio.Contratos
         List<ComprobanteDePago> buscarComprobanteDePagoPorDni (long dni);
         ComprobanteDePago buscarComprobanteDePago(long idComprobanteDePago);
         void editarComprobante(ComprobanteDePago comprobanteDePago);
-        void eliminarCategoria(long idCategoria);
+        void eliminarComprobante(long idCategoria);
     }
 }

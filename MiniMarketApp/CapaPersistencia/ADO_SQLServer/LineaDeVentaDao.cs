@@ -10,6 +10,12 @@ namespace CapaPersistencia.ADO_SQLServer
 {
     public class LineaDeVentaDao : ILineaDeVenta
     {
+        private GestorSQL gestorSQL;
+
+        public LineaDeVentaDao(IGestorAccesoDatos gestorSQL)
+        {
+            this.gestorSQL = (GestorSQL)gestorSQL;
+        }
         public LineaDeVenta buscarLineaDeVenta(long idLineaDeVenta)
         {
             throw new NotImplementedException();
@@ -25,7 +31,7 @@ namespace CapaPersistencia.ADO_SQLServer
             throw new NotImplementedException();
         }
 
-        public void eliminar(long idLineaDeVenta)
+        public void eliminarLineaDeVenta(long idLineaDeVenta)
         {
             throw new NotImplementedException();
         }

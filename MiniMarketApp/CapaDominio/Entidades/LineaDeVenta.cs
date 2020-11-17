@@ -15,13 +15,6 @@ namespace CapaDominio.Entidades
             set { idLineaDeVenta = value; }
         }
 
-        private int numeroDeLinea;
-        public int NumeroDeLinea
-        {
-            get { return numeroDeLinea; }
-            set { numeroDeLinea = value; }
-        }
-
         private Producto producto;
         public Producto Producto
         {

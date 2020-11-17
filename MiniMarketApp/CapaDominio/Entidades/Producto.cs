@@ -43,6 +43,13 @@ namespace CapaDominio.Entidades
             set { stock = value; }
         }
 
+        private String nombre;
+        public String Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
         private Categoria categoria;
         public Categoria Categoria
         {
