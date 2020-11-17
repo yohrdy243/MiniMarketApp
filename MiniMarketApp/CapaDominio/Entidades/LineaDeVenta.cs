@@ -59,5 +59,10 @@ namespace CapaDominio.Entidades
         {
             precioTotal = precioUnitario * cantidad;
         }
+
+        private void borrar()
+        {
+
+        }
     }
 }
