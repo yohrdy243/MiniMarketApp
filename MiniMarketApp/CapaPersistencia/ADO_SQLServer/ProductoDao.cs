@@ -32,7 +32,7 @@ namespace CapaPersistencia.ADO_SQLServer
             Producto producto = new Producto();
 
             String query = "select *from producto"+
-                           "where producto.idProducto = " + idProducto ;
+                           "where producto.idProducto = " + idProducto + ";" ;
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             if (resultadoSQL.Read())
@@ -52,7 +52,7 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             Producto producto = new Producto();
             String query = "select *from producto"+
-                            "where producto.nombre = '" + nombre + "'";
+                            "where producto.nombre = '" + nombre + "';";
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             if (resultadoSQL.Read())
@@ -117,12 +117,25 @@ namespace CapaPersistencia.ADO_SQLServer
         public void eliminar(long idProducto)
         {
             String query = "delete from producto"+
-                           "where producto.idProducto = idProducto; ";
+                           "where producto.idProducto = " + idProducto + ";";
+
+            SqlCommand sqlCommand;
+
+            sqlCommand = gestorSQL.obtenerComandoSQL(query);
+            sqlCommand.ExecuteNonQuery();
         }
         public List<Producto> listarProductosDeCategoria(Categoria categoria)
         {
+            
             String query = "select * from producto" +
                           "where producto.idCategoria_fk = idCategoria_fk"; ;
+
+            SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
+            while (resultadoSQL.Read())
+            {
+
+            }
+
         }
 
         public List<Producto> listarProductos()
