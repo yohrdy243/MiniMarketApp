@@ -11,8 +11,8 @@ namespace CapaDominio.Contratos
     {
         void crearLineaDeVenta(LineaDeVenta lineaDeVenta);
         List<LineaDeVenta> listarLineasDeVenta();
-        List<LineaDeVenta> listarLineasDeVentaDeComprobante(ComprobanteDePago comprobanteDePago);
-        List<LineaDeVenta> listarLineasDeVentaDeProducto(Producto producto);
+        List<LineaDeVenta> listarLineasDeVentaDeComprobante(long idcomprobanteDePago);
+        List<LineaDeVenta> listarLineasDeVentaDeProducto(long idProducto);
         LineaDeVenta buscarLineaDeVenta(long idLineaDeVenta);
         void editarLineaDeVenta(LineaDeVenta lineaDeVenta);
         void eliminarLineaDeVenta(long idLineaDeVenta);
