@@ -51,18 +51,13 @@ namespace CapaDominio.Entidades
             set { comprobanteDePago = value; }
         }
 
-        private void calcularPrecioUnitario()
+        public void calcularPrecioUnitario()
         {
             precioUnitario = producto.PrecioVenta;
         }
-        private void calcularPrecioTotal()
+        public void calcularPrecioTotal()
         {
             precioTotal = precioUnitario * cantidad;
-        }
-
-        private void borrar()
-        {
-
         }
     }
 }

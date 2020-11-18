@@ -42,9 +42,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios\AdministracionDatos.cs" />
+    <Compile Include="Servicios\RegistrarVenta.cs" />
+    <Compile Include="Servicios\Reportes.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Servicios\" />
+    <ProjectReference Include="..\CapaDominio\CapaDominio.csproj">
+      <Project>{33f0ece6-d9fb-46bf-afcf-7212063e5e47}</Project>
+      <Name>CapaDominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaPersistencia\CapaPersistencia.csproj">
+      <Project>{9d7e9b8e-1a4f-4771-a740-c2677c6ef1d4}</Project>
+      <Name>CapaPersistencia</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

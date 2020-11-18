@@ -51,9 +51,8 @@
     <Compile Include="Entidades\LineaDeVenta.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios\ProcesarComprobante.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Servicios\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
