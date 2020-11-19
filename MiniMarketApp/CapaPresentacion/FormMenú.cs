@@ -19,7 +19,8 @@ namespace CapaPresentacion
 
         private void registrarVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            RegistrarVenta Venta = new RegistrarVenta();
+            Venta.Show();
         }
 
         private void registarNuevoProductoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,6 +39,11 @@ namespace CapaPresentacion
         {
             FormElimniarProducto formEliminarProducto = new FormElimniarProducto();
             formEliminarProducto.Show();
+        }
+
+        private void FormMenú_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

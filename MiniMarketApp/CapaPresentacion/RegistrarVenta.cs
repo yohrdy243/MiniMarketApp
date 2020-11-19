@@ -36,5 +36,21 @@ namespace CapaPresentacion
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AgregarProductoForm agregar = new AgregarProductoForm();
+            agregar.Show();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

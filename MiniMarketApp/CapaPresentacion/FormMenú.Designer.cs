@@ -120,6 +120,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.menuStrip2);
             this.Name = "FormMenú";
             this.Text = "Minimarket Sunset";
+            this.Load += new System.EventHandler(this.FormMenú_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
