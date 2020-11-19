@@ -46,66 +46,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarProductoForm.cs">
+    <Compile Include="Formularios\AgregarProductoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarProductoForm.Designer.cs">
+    <Compile Include="Formularios\AgregarProductoForm.Designer.cs">
       <DependentUpon>AgregarProductoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormElimniarProducto.cs">
+    <Compile Include="Formularios\FormElimniarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormElimniarProducto.Designer.cs">
+    <Compile Include="Formularios\FormElimniarProducto.Designer.cs">
       <DependentUpon>FormElimniarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEditarProducto.cs">
+    <Compile Include="Formularios\FormEditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEditarProducto.Designer.cs">
+    <Compile Include="Formularios\FormEditarProducto.Designer.cs">
       <DependentUpon>FormEditarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMenú.cs">
+    <Compile Include="Formularios\FormMenú.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMenú.Designer.cs">
+    <Compile Include="Formularios\FormMenú.Designer.cs">
       <DependentUpon>FormMenú.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin.cs">
+    <Compile Include="Formularios\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLogin.Designer.cs">
+    <Compile Include="Formularios\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNuevoProducto.cs">
+    <Compile Include="Formularios\FormNuevoProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNuevoProducto.Designer.cs">
+    <Compile Include="Formularios\FormNuevoProducto.Designer.cs">
       <DependentUpon>FormNuevoProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrarVenta.cs">
+    <Compile Include="Formularios\RegistrarVenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrarVenta.Designer.cs">
+    <Compile Include="Formularios\RegistrarVenta.Designer.cs">
       <DependentUpon>RegistrarVenta.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AgregarProductoForm.resx">
+    <EmbeddedResource Include="Formularios\AgregarProductoForm.resx">
       <DependentUpon>AgregarProductoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormElimniarProducto.resx">
+    <EmbeddedResource Include="Formularios\FormElimniarProducto.resx">
       <DependentUpon>FormElimniarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEditarProducto.resx">
+    <EmbeddedResource Include="Formularios\FormEditarProducto.resx">
       <DependentUpon>FormEditarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin.resx">
+    <EmbeddedResource Include="Formularios\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMenú.resx">
+    <EmbeddedResource Include="Formularios\FormMenú.resx">
       <DependentUpon>FormMenú.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNuevoProducto.resx">
+    <EmbeddedResource Include="Formularios\FormNuevoProducto.resx">
       <DependentUpon>FormNuevoProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -117,7 +117,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegistrarVenta.resx">
+    <EmbeddedResource Include="Formularios\RegistrarVenta.resx">
       <DependentUpon>RegistrarVenta.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

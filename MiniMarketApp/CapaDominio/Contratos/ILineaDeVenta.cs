@@ -16,5 +16,6 @@ namespace CapaDominio.Contratos
         LineaDeVenta buscarLineaDeVenta(long idLineaDeVenta);
         void editarLineaDeVenta(LineaDeVenta lineaDeVenta);
         void eliminarLineaDeVenta(long idLineaDeVenta);
+        List<LineaDeVenta> listarLineasDeVentaDelDia();
     }
 }

@@ -159,5 +159,24 @@ namespace CapaPersistencia.ADO_SQLServer
 
             return lineasDeVenta;
         }
+
+        public List<LineaDeVenta> listarLineasDeVentaDelDia()
+        {
+            List<LineaDeVenta> lineasDeVenta = new List<LineaDeVenta>();
+
+            String query = "select lineaDeVenta.* from lineaDeVenta,comprobanteDePago" +
+                            "where lineaDeVenta.idComprobante_fk = comprobanteDePago.idComprobante" +
+                            "and comprobanteDePago.fecha = " + DateTime.Now.Date.ToString() +
+                            "order by  lineaDeVenta.idProducto_fk asc";
+
+            SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
+
+            while (resultadoSQL.Read())
+            {
+                lineasDeVenta.Add(obtenerLineaDeVenta(resultadoSQL));
+            }
+
+            return lineasDeVenta;
+        }
     }
 }
