@@ -56,7 +56,5 @@ namespace CapaDominio.Entidades
             get { return categoria; }
             set { categoria = value; }
         }
-
-
     }
 }
