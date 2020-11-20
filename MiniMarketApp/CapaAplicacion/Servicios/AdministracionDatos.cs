@@ -27,7 +27,7 @@ namespace CapaAplicacion.Servicios
             lineaDeVentaService = fabricaAbstracta.crearLineaDeVentaDao(gestorAccesoDatos);
             comprobanteDePagoService = fabricaAbstracta.crearComprobanteDePagoDao(gestorAccesoDatos);
         }
-        List<Producto> listarProductos()
+        public List<Producto> listarProductos()
         {
             gestorAccesoDatos.abrirConexion();
             List<Producto> productos = productoService.listarProductos();
@@ -40,7 +40,7 @@ namespace CapaAplicacion.Servicios
             return productos;
         }
 
-        Producto buscarProducto(long idProducto)
+        public Producto buscarProducto(long idProducto)
         {
             gestorAccesoDatos.abrirConexion();
             Producto producto = productoService.buscar(idProducto);
@@ -49,25 +49,25 @@ namespace CapaAplicacion.Servicios
 
             return producto;
         }
-        void guardarProducto(Producto producto)
+        public void guardarProducto(Producto producto)
         {
             gestorAccesoDatos.abrirConexion();
             productoService.crearProducto(producto);
             gestorAccesoDatos.cerrarConexion();
         }
-        void editarProducto(Producto producto)
+        public void editarProducto(Producto producto)
         {
             gestorAccesoDatos.abrirConexion();
             productoService.editar(producto);
             gestorAccesoDatos.cerrarConexion();
         }
-        void eliminarProducto(long IdProducto)
+        public void eliminarProducto(long IdProducto)
         {
             gestorAccesoDatos.abrirConexion();
             productoService.eliminar(IdProducto);
             gestorAccesoDatos.cerrarConexion();
         }
-        List<Categoria> listarCategoria()
+        public List<Categoria> listarCategoria()
         {
             gestorAccesoDatos.abrirConexion();
             List<Categoria> categorias = categoriaService.listarCategorias();
@@ -75,7 +75,7 @@ namespace CapaAplicacion.Servicios
 
             return categorias;
         }
-        Categoria buscarCategoria(long idCategoria)
+        public Categoria buscarCategoria(long idCategoria)
         {
             gestorAccesoDatos.abrirConexion();
             Categoria categoria = categoriaService.buscarCategoria(idCategoria);
@@ -148,7 +148,7 @@ namespace CapaAplicacion.Servicios
             gestorAccesoDatos.cerrarConexion();
         }
 
-        List<ComprobanteDePago> listarComprobanteDePago()
+        public List<ComprobanteDePago> listarComprobanteDePago()
         {
             gestorAccesoDatos.abrirConexion();
             List<ComprobanteDePago> comprobantesDePago = comprobanteDePagoService.listarComprobanteDePago();
@@ -165,7 +165,7 @@ namespace CapaAplicacion.Servicios
             return comprobantesDePago;
         }
 
-        ComprobanteDePago buscarComprobanteDePago(long idComprobante)
+        public ComprobanteDePago buscarComprobanteDePago(long idComprobante)
         {
             gestorAccesoDatos.abrirConexion();
             ComprobanteDePago comprobanteDePago = comprobanteDePagoService.buscarComprobanteDePago(idComprobante);

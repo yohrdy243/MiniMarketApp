@@ -25,8 +25,7 @@ namespace CapaPresentacion
 
         private void registarNuevoProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormNuevoProducto formNuevoProducto = new FormNuevoProducto();
-            formNuevoProducto.Show();
+            MantendorProductos mantendorProductos = new MantendorProductos(); 
         }
 
         private void editarProductoToolStripMenuItem_Click(object sender, EventArgs e)

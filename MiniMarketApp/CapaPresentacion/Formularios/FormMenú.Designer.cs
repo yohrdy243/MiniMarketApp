@@ -35,9 +35,7 @@ namespace CapaPresentacion
             this.reporteDiarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportePorProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registarNuevoProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MantendorProdcutosStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,33 +82,17 @@ namespace CapaPresentacion
             // administrarProductosToolStripMenuItem
             // 
             this.administrarProductosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registarNuevoProductoToolStripMenuItem,
-            this.editarProductoToolStripMenuItem,
-            this.eliminarProductoToolStripMenuItem});
+            this.MantendorProdcutosStripMenuItem});
             this.administrarProductosToolStripMenuItem.Name = "administrarProductosToolStripMenuItem";
-            this.administrarProductosToolStripMenuItem.Size = new System.Drawing.Size(138, 20);
-            this.administrarProductosToolStripMenuItem.Text = "Administrar Productos";
+            this.administrarProductosToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.administrarProductosToolStripMenuItem.Text = "Administrar";
             // 
-            // registarNuevoProductoToolStripMenuItem
+            // MantendorProdcutosStripMenuItem
             // 
-            this.registarNuevoProductoToolStripMenuItem.Name = "registarNuevoProductoToolStripMenuItem";
-            this.registarNuevoProductoToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.registarNuevoProductoToolStripMenuItem.Text = "Registar Nuevo Producto";
-            this.registarNuevoProductoToolStripMenuItem.Click += new System.EventHandler(this.registarNuevoProductoToolStripMenuItem_Click);
-            // 
-            // editarProductoToolStripMenuItem
-            // 
-            this.editarProductoToolStripMenuItem.Name = "editarProductoToolStripMenuItem";
-            this.editarProductoToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.editarProductoToolStripMenuItem.Text = "Editar Producto";
-            this.editarProductoToolStripMenuItem.Click += new System.EventHandler(this.editarProductoToolStripMenuItem_Click);
-            // 
-            // eliminarProductoToolStripMenuItem
-            // 
-            this.eliminarProductoToolStripMenuItem.Name = "eliminarProductoToolStripMenuItem";
-            this.eliminarProductoToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.eliminarProductoToolStripMenuItem.Text = "Eliminar Producto";
-            this.eliminarProductoToolStripMenuItem.Click += new System.EventHandler(this.eliminarProductoToolStripMenuItem_Click);
+            this.MantendorProdcutosStripMenuItem.Name = "MantendorProdcutosStripMenuItem";
+            this.MantendorProdcutosStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MantendorProdcutosStripMenuItem.Text = "Productos";
+            this.MantendorProdcutosStripMenuItem.Click += new System.EventHandler(this.registarNuevoProductoToolStripMenuItem_Click);
             // 
             // FormMenú
             // 
@@ -134,9 +116,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.ToolStripMenuItem registrarVentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem realizarReporteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarProductosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registarNuevoProductoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editarProductoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MantendorProdcutosStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteDiarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportePorProductoToolStripMenuItem;
     }
