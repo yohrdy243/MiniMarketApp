@@ -31,6 +31,10 @@ namespace CapaAplicacion.Servicios
         {
             gestorAccesoDatos.abrirConexion();
             List<Producto> productos = productoService.listarProductos();
+            foreach(Producto producto in productos)
+            {
+                producto.Categoria = categoriaService.buscarCategoria(producto.Categoria.IdCategoria);
+            }
             gestorAccesoDatos.cerrarConexion();
 
             return productos;
@@ -40,6 +44,7 @@ namespace CapaAplicacion.Servicios
         {
             gestorAccesoDatos.abrirConexion();
             Producto producto = productoService.buscar(idProducto);
+            producto.Categoria = categoriaService.buscarCategoria(producto.Categoria.IdCategoria);
             gestorAccesoDatos.cerrarConexion();
 
             return producto;
@@ -102,6 +107,12 @@ namespace CapaAplicacion.Servicios
         {
             gestorAccesoDatos.abrirConexion();
             List<LineaDeVenta> lineasDeVenta = lineaDeVentaService.listarLineasDeVenta();
+
+            foreach (LineaDeVenta lineaDeVenta in lineasDeVenta)
+            {
+                lineaDeVenta.Producto = buscarProducto(lineaDeVenta.Producto.IdProducto);
+                lineaDeVenta.ComprobanteDePago = comprobanteDePagoService.buscarComprobanteDePago(lineaDeVenta.ComprobanteDePago.IdComprobante);
+            }
             gestorAccesoDatos.cerrarConexion();
 
             return lineasDeVenta;
@@ -111,6 +122,8 @@ namespace CapaAplicacion.Servicios
         {
             gestorAccesoDatos.abrirConexion();
             LineaDeVenta lineaDeVenta = lineaDeVentaService.buscarLineaDeVenta(idLineaDeVenta);
+            lineaDeVenta.Producto = buscarProducto(lineaDeVenta.Producto.IdProducto);
+            lineaDeVenta.ComprobanteDePago = comprobanteDePagoService.buscarComprobanteDePago(lineaDeVenta.ComprobanteDePago.IdComprobante);
             gestorAccesoDatos.cerrarConexion();
 
             return lineaDeVenta;
@@ -139,6 +152,14 @@ namespace CapaAplicacion.Servicios
         {
             gestorAccesoDatos.abrirConexion();
             List<ComprobanteDePago> comprobantesDePago = comprobanteDePagoService.listarComprobanteDePago();
+            foreach (ComprobanteDePago comprobanteDePago in comprobantesDePago)
+            {
+                comprobanteDePago.LineasDeVenta = lineaDeVentaService.listarLineasDeVentaDeComprobante(comprobanteDePago.IdComprobante);
+                foreach (LineaDeVenta lineaDeVenta in comprobanteDePago.LineasDeVenta)
+                {
+                    lineaDeVenta.Producto = buscarProducto(lineaDeVenta.Producto.IdProducto);
+                }
+            }
             gestorAccesoDatos.cerrarConexion();
 
             return comprobantesDePago;
@@ -148,6 +169,11 @@ namespace CapaAplicacion.Servicios
         {
             gestorAccesoDatos.abrirConexion();
             ComprobanteDePago comprobanteDePago = comprobanteDePagoService.buscarComprobanteDePago(idComprobante);
+            comprobanteDePago.LineasDeVenta = lineaDeVentaService.listarLineasDeVentaDeComprobante(comprobanteDePago.IdComprobante);
+            foreach (LineaDeVenta lineaDeVenta in comprobanteDePago.LineasDeVenta)
+            {
+                lineaDeVenta.Producto = buscarProducto(lineaDeVenta.Producto.IdProducto);
+            }
             gestorAccesoDatos.cerrarConexion();
 
             return comprobanteDePago;

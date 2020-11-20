@@ -29,13 +29,6 @@ namespace CapaDominio.Entidades
             set { precioCompra = value; }
         }
 
-        private String descripcion;
-        public String Descripcion
-        {
-            get { return descripcion; }
-            set { descripcion = value; }
-        }
-
         private int stock;
         public int Stock
         {

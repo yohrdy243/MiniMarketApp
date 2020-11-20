@@ -23,11 +23,10 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             Producto producto = new Producto();
             producto.IdProducto = resultadoSql.GetInt32(0);
-            producto.Descripcion = resultadoSql.GetString(1);
-            producto.Nombre = resultadoSql.GetString(2);
-            producto.Stock = resultadoSql.GetInt32(3);
-            producto.PrecioVenta = resultadoSql.GetFloat(4);
-            producto.PrecioCompra = resultadoSql.GetFloat(5);
+            producto.Nombre = resultadoSql.GetString(1);
+            producto.Stock = resultadoSql.GetInt32(2);
+            producto.PrecioVenta = resultadoSql.GetFloat(3);
+            producto.PrecioCompra = resultadoSql.GetFloat(4);
   
             Categoria categoria = new Categoria();
             categoria.IdCategoria = resultadoSql.GetInt32(6);
@@ -73,15 +72,14 @@ namespace CapaPersistencia.ADO_SQLServer
 
         public void crearProducto(Producto producto)
         {
-            String query = "insert into producto(nombre,descripcion,stock,precioCompra,precioVenta,idCategoria_fk)" +
-                           "values(@nombre, @descripcion, @stock, @precioCompra, @precioVenta, @idCategoria_fk)";
+            String query = "insert into producto(nombre,stock,precioCompra,precioVenta,idCategoria_fk)" +
+                           "values(@nombre, @stock, @precioCompra, @precioVenta, @idCategoria_fk)";
 
             SqlCommand sqlCommand;
 
             sqlCommand = gestorSQL.obtenerComandoSQL(query);
 
             sqlCommand.Parameters.AddWithValue("@nombre",producto.Nombre);
-            sqlCommand.Parameters.AddWithValue("@descripcion", producto.Descripcion);
             sqlCommand.Parameters.AddWithValue("@stock", producto.Stock);
             sqlCommand.Parameters.AddWithValue("@precioCompra", producto.PrecioCompra);
             sqlCommand.Parameters.AddWithValue("@precioVenta", producto.PrecioVenta);
@@ -99,7 +97,6 @@ namespace CapaPersistencia.ADO_SQLServer
                                 "precioCompra = @precioCompra,"+
                                 "precioVenta = @precioVenta,"+
                                 "nombre = @nombre,"+
-                                "descripcion = @descripcion,"+
                                 "stock = @stock,"+
                                 "idCategoria_fk = @idCategoria_fk"+
                              "where producto.idProducto = idProducto";
@@ -109,7 +106,6 @@ namespace CapaPersistencia.ADO_SQLServer
             sqlCommand = gestorSQL.obtenerComandoSQL(query);
 
             sqlCommand.Parameters.AddWithValue("@nombre", producto.Nombre);
-            sqlCommand.Parameters.AddWithValue("@descripcion", producto.Descripcion);
             sqlCommand.Parameters.AddWithValue("@stock", producto.Stock);
             sqlCommand.Parameters.AddWithValue("@precioCompra", producto.PrecioCompra);
             sqlCommand.Parameters.AddWithValue("@precioVenta", producto.PrecioVenta);
