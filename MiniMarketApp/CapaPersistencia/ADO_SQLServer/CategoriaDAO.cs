@@ -32,8 +32,7 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             Categoria categoria = new Categoria();
 
-            String query = "select * from categoria"+
-                           "where categoria.idCategoria = "+idCategoria;
+            String query = "select * from categoria where categoria.idCategoria = " + idCategoria + ";";
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             if (resultadoSQL.Read())
@@ -48,21 +47,7 @@ namespace CapaPersistencia.ADO_SQLServer
             return categoria;
         }
 
-        List<Categoria> ICategoria.buscarCategoriaPorNombre(string nombre)
-        {
-            List<Categoria> categorias = new List<Categoria>();
-
-            String query = "select * from categoria" +
-                           "where categoria.nombreCategoria LIKE '%" + nombre + "%' ";
-
-            SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
-            while (resultadoSQL.Read())
-            {
-                categorias.Add(obtenerCategoria(resultadoSQL));
-            }
-
-            return categorias;
-        }
+        
 
         public void crearCategoria(Categoria categoria)
         {
@@ -118,6 +103,23 @@ namespace CapaPersistencia.ADO_SQLServer
             return categorias;
         }
 
-        
+        Categoria ICategoria.buscarCategoriaPorNombre(string nombre)
+        {
+            Categoria categoria = new Categoria();
+
+            String query = "select * from categoria where categoria.nombreCategoria LIKE '" + nombre + "' ";
+
+            SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
+            if (resultadoSQL.Read())
+            {
+                categoria = obtenerCategoria(resultadoSQL);
+            }
+            else
+            {
+                return null;
+            }
+
+            return categoria;
+        }
     }
 }

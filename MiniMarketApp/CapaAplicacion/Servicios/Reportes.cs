@@ -32,7 +32,9 @@ namespace CapaAplicacion.Servicios
 
         private List<LineaDeVenta> obtenerLineasDeVenta()
         {
+            gestorAccesoDatos.abrirConexion();
             List<LineaDeVenta> lineasDeVenta = lineaDeVentaService.listarLineasDeVentaDelDia();
+            gestorAccesoDatos.cerrarConexion();
             List<LineaDeVenta> lineasDeVentaProcesadas = new List<LineaDeVenta>();
 
             LineaDeVenta lineaDeVentaTemporal = lineasDeVenta[0];
@@ -44,20 +46,31 @@ namespace CapaAplicacion.Servicios
 
             foreach(LineaDeVenta lineaDeVenta in lineasDeVenta)
             {
-                if(i == lineaDeVenta.Producto.IdProducto)
+                if( i == lineaDeVenta.Producto.IdProducto)
                 {
-                    lineaDeVentaTemporal.Cantidad = lineaDeVentaTemporal.Cantidad + lineaDeVenta.Cantidad;
                     lineaDeVentaTemporal.Preciototal = lineaDeVentaTemporal.Preciototal + lineaDeVenta.Preciototal;
+                    lineaDeVentaTemporal.Cantidad = lineaDeVentaTemporal.Cantidad + lineaDeVenta.Cantidad;
                 }
-                else
+                else if ( i != lineaDeVenta.Producto.IdProducto )
                 {
-                    lineaDeVentaTemporal.Producto = productoService.buscar(lineaDeVentaTemporal.Producto.IdProducto);
-                    lineasDeVentaProcesadas.Add(lineaDeVentaTemporal);        
+                    lineaDeVentaTemporal.Producto.IdProducto = i;
+                    lineasDeVentaProcesadas.Add(lineaDeVentaTemporal);
                     lineaDeVentaTemporal = lineaDeVenta;
                     i = lineaDeVenta.Producto.IdProducto;
+                    
+
                 }
+                
             }
 
+            lineasDeVentaProcesadas.Add(lineaDeVentaTemporal);
+
+            foreach (LineaDeVenta lineaDeVenta1 in lineasDeVentaProcesadas)
+            { 
+                gestorAccesoDatos.abrirConexion();
+                lineaDeVenta1.Producto = productoService.buscar(lineaDeVenta1.Producto.IdProducto);
+                gestorAccesoDatos.cerrarConexion();
+            }
             return lineasDeVentaProcesadas;
         }
         public void repoteDiario() 
@@ -68,48 +81,46 @@ namespace CapaAplicacion.Servicios
 
             exportarExcel.Application.Workbooks.Add(true);
 
-            List<String> cabecera = new List<String>();
+            List<String> cabeceras = new List<String>();
             
-            cabecera.Add("Producto");
-            cabecera.Add("Cantidad");
-            cabecera.Add("Stock Restante");
-            cabecera.Add("Precio de Venta");
-            cabecera.Add("Precio de Compra");
-            cabecera.Add("Ingreso del Producto");
-            cabecera.Add("Ganancia");
+            cabeceras.Add("Producto");
+            cabeceras.Add("Cantidad");
+            cabeceras.Add("Stock Restante");
+            cabeceras.Add("Precio de Venta");
+            cabeceras.Add("Precio de Compra");
+            cabeceras.Add("Ingreso del Producto");
+            cabeceras.Add("Ganancia");
 
-            int nColumnas = 7;
-            int nFilas = lineasDeVenta.Count;
-
-            int iCabecera = 0;
-            int iLineasDeVenta = 0;
+            int indiceFila = 2;
+            int indiceColumna = 1;
 
             float ingresoTotal = 0;
             float gananciaTotal = 0;
-            for (int indiceColumna = 1; indiceColumna <= nColumnas; indiceColumna++ )
+
+            foreach (String cabecera in cabeceras)
             {
-                exportarExcel.Cells[1,indiceColumna] = cabecera[iCabecera];
-                iCabecera++;
+                exportarExcel.Cells[1,indiceColumna] = cabecera;
+                indiceColumna++;
             }
 
-            for(int indiceFila = 1; indiceFila <= nFilas; indiceFila++)
+            foreach(LineaDeVenta lineaDeVenta in lineasDeVenta)
             {
-                exportarExcel.Cells[indiceFila + 1, 1] = lineasDeVenta[iLineasDeVenta].Producto.Nombre;
-                exportarExcel.Cells[indiceFila + 1, 2] = lineasDeVenta[iLineasDeVenta].Cantidad;
-                exportarExcel.Cells[indiceFila + 1, 3] = lineasDeVenta[iLineasDeVenta].Producto.Stock;
-                exportarExcel.Cells[indiceFila + 1, 4] = lineasDeVenta[iLineasDeVenta].Producto.PrecioVenta;
-                exportarExcel.Cells[indiceFila + 1, 5] = lineasDeVenta[iLineasDeVenta].Producto.PrecioCompra;
-                exportarExcel.Cells[indiceFila + 1, 6] = lineasDeVenta[iLineasDeVenta].Producto.PrecioVenta * lineasDeVenta[iLineasDeVenta].Cantidad;
-                exportarExcel.Cells[indiceFila + 1, 7] = lineasDeVenta[iLineasDeVenta].Cantidad * (lineasDeVenta[iLineasDeVenta].Producto.PrecioVenta + lineasDeVenta[iLineasDeVenta].Producto.PrecioCompra);
+                exportarExcel.Cells[indiceFila, 1] = lineaDeVenta.Producto.Nombre;
+                exportarExcel.Cells[indiceFila, 2] = lineaDeVenta.Cantidad;
+                exportarExcel.Cells[indiceFila, 3] = lineaDeVenta.Producto.Stock;
+                exportarExcel.Cells[indiceFila, 4] = lineaDeVenta.Producto.PrecioVenta;
+                exportarExcel.Cells[indiceFila, 5] = lineaDeVenta.Producto.PrecioCompra;
+                exportarExcel.Cells[indiceFila, 6] = lineaDeVenta.Producto.PrecioVenta * lineaDeVenta.Cantidad;
+                exportarExcel.Cells[indiceFila, 7] = lineaDeVenta.Cantidad * (lineaDeVenta.Producto.PrecioVenta - lineaDeVenta.Producto.PrecioCompra);
                 
-                ingresoTotal = ingresoTotal + lineasDeVenta[iLineasDeVenta].Producto.PrecioVenta * lineasDeVenta[iLineasDeVenta].Cantidad;
-                gananciaTotal = gananciaTotal + lineasDeVenta[iLineasDeVenta].Cantidad * (lineasDeVenta[iLineasDeVenta].Producto.PrecioVenta + lineasDeVenta[iLineasDeVenta].Producto.PrecioCompra);
+                ingresoTotal = ingresoTotal + lineaDeVenta.Producto.PrecioVenta * lineaDeVenta.Cantidad;
+                gananciaTotal = gananciaTotal + lineaDeVenta.Cantidad * (lineaDeVenta.Producto.PrecioVenta - lineaDeVenta.Producto.PrecioCompra);
                 
-                iLineasDeVenta++;
+                indiceFila++;
             }
 
-            exportarExcel.Cells[nFilas + 1, 6] = ingresoTotal;
-            exportarExcel.Cells[nFilas + 1, 7] = gananciaTotal;
+            exportarExcel.Cells[indiceFila, 6] = ingresoTotal;
+            exportarExcel.Cells[indiceFila, 7] = gananciaTotal;
 
             exportarExcel.Visible = true;
 

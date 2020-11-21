@@ -20,7 +20,16 @@ namespace CapaPresentacion
         private void btnLogin_Click(object sender, EventArgs e)
         {
             FormMenú menuMinimarket = new FormMenú();
+            
             menuMinimarket.Show();
+
+            this.Hide();
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

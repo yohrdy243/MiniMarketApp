@@ -22,16 +22,16 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             LineaDeVenta lineaDeVenta = new LineaDeVenta();
 
-            lineaDeVenta.IdLineaDeVenta = resultadoSql.GetInt32(0);
+            lineaDeVenta.IdLineaDeVenta = resultadoSql.GetInt64(0);
             lineaDeVenta.Cantidad = resultadoSql.GetInt32(1);
-            lineaDeVenta.PrecioUnitario = resultadoSql.GetFloat(2);
-            lineaDeVenta.Preciototal = resultadoSql.GetFloat(3);
+            lineaDeVenta.PrecioUnitario = float.Parse(resultadoSql.GetDouble(2).ToString());
+            lineaDeVenta.Preciototal = float.Parse(resultadoSql.GetDouble(3).ToString());
 
             Producto producto = new Producto();
-            producto.IdProducto = resultadoSql.GetInt32(4);
+            producto.IdProducto = resultadoSql.GetInt64(4);
 
             ComprobanteDePago comprobanteDePago = new ComprobanteDePago();
-            comprobanteDePago.IdComprobante = resultadoSql.GetInt32(5);
+            comprobanteDePago.IdComprobante = resultadoSql.GetInt64(5);
 
             lineaDeVenta.Producto = producto;
             lineaDeVenta.ComprobanteDePago = comprobanteDePago;
@@ -164,10 +164,7 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             List<LineaDeVenta> lineasDeVenta = new List<LineaDeVenta>();
 
-            String query = "select lineaDeVenta.* from lineaDeVenta,comprobanteDePago" +
-                            "where lineaDeVenta.idComprobante_fk = comprobanteDePago.idComprobante" +
-                            "and comprobanteDePago.fecha = " + DateTime.Now.Date.ToString() +
-                            "order by  lineaDeVenta.idProducto_fk asc";
+            String query = "select lineaDeVenta.* from lineaDeVenta,comprobanteDePago where lineaDeVenta.idComprobante_fk = comprobanteDePago.idComprobante and comprobanteDePago.fecha = '" + DateTime.Now.Date.ToString() + "' order by  lineaDeVenta.idProducto_fk asc";
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
 

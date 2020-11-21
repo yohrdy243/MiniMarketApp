@@ -36,17 +36,17 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(193, 236);
+            this.btnLogin.Location = new System.Drawing.Point(195, 290);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(224, 46);
             this.btnLogin.TabIndex = 0;
-            this.btnLogin.Text = "Log In";
+            this.btnLogin.Text = "Ingresar";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(82, 180);
+            this.textBox1.Location = new System.Drawing.Point(84, 234);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(465, 20);
             this.textBox1.TabIndex = 1;
@@ -54,20 +54,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(79, 147);
+            this.label1.Location = new System.Drawing.Point(81, 201);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Ingresar Clave:";
+            this.label1.Text = "Ingresar Clave";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(247, 66);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(152, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 13);
+            this.label2.Size = new System.Drawing.Size(327, 42);
             this.label2.TabIndex = 3;
-            this.label2.Text = "MINIMARKET-SUNSET";
+            this.label2.Text = "MiniMarket Sunset";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // FormLogin
             // 
@@ -79,7 +81,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnLogin);
             this.Name = "FormLogin";
-            this.Text = "Log In";
+            this.Text = "Ingresar";
             this.ResumeLayout(false);
             this.PerformLayout();
 

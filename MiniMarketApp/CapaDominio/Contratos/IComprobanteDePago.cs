@@ -17,5 +17,7 @@ namespace CapaDominio.Contratos
         ComprobanteDePago buscarComprobanteDePago(long idComprobanteDePago);
         void editarComprobante(ComprobanteDePago comprobanteDePago);
         void eliminarComprobante(long idComprobante);
+        ComprobanteDePago obtenerComprobanteDePagoGuardado();
+        
     }
 }

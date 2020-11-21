@@ -33,7 +33,6 @@ namespace CapaPresentacion
             this.registrarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.realizarReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteDiarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportePorProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MantendorProdcutosStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
@@ -61,8 +60,7 @@ namespace CapaPresentacion
             // realizarReporteToolStripMenuItem
             // 
             this.realizarReporteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reporteDiarioToolStripMenuItem,
-            this.reportePorProductoToolStripMenuItem});
+            this.reporteDiarioToolStripMenuItem});
             this.realizarReporteToolStripMenuItem.Name = "realizarReporteToolStripMenuItem";
             this.realizarReporteToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
             this.realizarReporteToolStripMenuItem.Text = "Realizar Reporte";
@@ -70,14 +68,9 @@ namespace CapaPresentacion
             // reporteDiarioToolStripMenuItem
             // 
             this.reporteDiarioToolStripMenuItem.Name = "reporteDiarioToolStripMenuItem";
-            this.reporteDiarioToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.reporteDiarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reporteDiarioToolStripMenuItem.Text = "Reporte Diario";
-            // 
-            // reportePorProductoToolStripMenuItem
-            // 
-            this.reportePorProductoToolStripMenuItem.Name = "reportePorProductoToolStripMenuItem";
-            this.reportePorProductoToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.reportePorProductoToolStripMenuItem.Text = "Reporte Por Producto";
+            this.reporteDiarioToolStripMenuItem.Click += new System.EventHandler(this.reporteDiarioToolStripMenuItem_Click);
             // 
             // administrarProductosToolStripMenuItem
             // 
@@ -90,7 +83,7 @@ namespace CapaPresentacion
             // MantendorProdcutosStripMenuItem
             // 
             this.MantendorProdcutosStripMenuItem.Name = "MantendorProdcutosStripMenuItem";
-            this.MantendorProdcutosStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MantendorProdcutosStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.MantendorProdcutosStripMenuItem.Text = "Productos";
             this.MantendorProdcutosStripMenuItem.Click += new System.EventHandler(this.registarNuevoProductoToolStripMenuItem_Click);
             // 
@@ -102,6 +95,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.menuStrip2);
             this.Name = "FormMenú";
             this.Text = "Minimarket Sunset";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMenú_FormClosed);
             this.Load += new System.EventHandler(this.FormMenú_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
@@ -118,6 +112,5 @@ namespace CapaPresentacion
         private System.Windows.Forms.ToolStripMenuItem administrarProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MantendorProdcutosStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteDiarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportePorProductoToolStripMenuItem;
     }
 }

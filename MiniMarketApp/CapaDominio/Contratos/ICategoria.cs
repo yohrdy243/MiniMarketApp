@@ -11,7 +11,7 @@ namespace CapaDominio.Contratos
         void crearCategoria(Categoria categoria);
         List<Categoria> listarCategorias();
         Categoria buscarCategoria(long idCategoria);
-        List<Categoria> buscarCategoriaPorNombre(string nombre);
+        Categoria buscarCategoriaPorNombre(string nombre);
         void editarCategoria(Categoria categoria);
         void eliminarCategoria(long idCategoria);
     }

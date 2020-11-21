@@ -22,14 +22,14 @@ namespace CapaPersistencia.ADO_SQLServer
         private Producto obtenerProducto(SqlDataReader resultadoSql)
         {
             Producto producto = new Producto();
-            producto.IdProducto = resultadoSql.GetInt32(0);
+            producto.IdProducto = resultadoSql.GetInt64(0);
             producto.Nombre = resultadoSql.GetString(1);
             producto.Stock = resultadoSql.GetInt32(2);
-            producto.PrecioVenta = resultadoSql.GetFloat(3);
-            producto.PrecioCompra = resultadoSql.GetFloat(4);
+            producto.PrecioVenta = (float)resultadoSql.GetDouble(3);
+            producto.PrecioCompra = (float)resultadoSql.GetDouble(4);
   
             Categoria categoria = new Categoria();
-            categoria.IdCategoria = resultadoSql.GetInt32(6);
+            categoria.IdCategoria = resultadoSql.GetInt64(5);
 
             producto.Categoria = categoria;
             
@@ -39,8 +39,7 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             Producto producto = new Producto();
 
-            String query = "select *from producto"+
-                           "where producto.idProducto = " + idProducto + ";" ;
+            String query = "select *from producto where producto.idProducto = " + idProducto +" and producto.estado = 1 ;" ;
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             if (resultadoSQL.Read())
@@ -59,8 +58,7 @@ namespace CapaPersistencia.ADO_SQLServer
         public List<Producto> buscarPorNombre(string nombre)
         {
             List<Producto> productos = new List<Producto>();
-            String query = "select *from producto"+
-                            "where producto.nombre = '%" + nombre + "%';";
+            String query = "select *from producto where producto.nombre like '%" + nombre + "%' and producto.estado = 1;";
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             while (resultadoSQL.Read())
@@ -72,8 +70,7 @@ namespace CapaPersistencia.ADO_SQLServer
 
         public void crearProducto(Producto producto)
         {
-            String query = "insert into producto(nombre,stock,precioCompra,precioVenta,idCategoria_fk)" +
-                           "values(@nombre, @stock, @precioCompra, @precioVenta, @idCategoria_fk)";
+            String query = "insert into producto(nombre,stock,precioCompra,precioVenta,idCategoria_fk,estado) values(@nombre, @stock, @precioCompra, @precioVenta, @idCategoria_fk,1)";
 
             SqlCommand sqlCommand;
 
@@ -92,14 +89,7 @@ namespace CapaPersistencia.ADO_SQLServer
 
         public void editar(Producto producto)
         {
-            String query = "update producto"+
-                            "set"+
-                                "precioCompra = @precioCompra,"+
-                                "precioVenta = @precioVenta,"+
-                                "nombre = @nombre,"+
-                                "stock = @stock,"+
-                                "idCategoria_fk = @idCategoria_fk"+
-                             "where producto.idProducto = idProducto";
+            String query = "update producto set precioCompra = @precioCompra, precioVenta = @precioVenta, nombre = @nombre, stock = @stock, idCategoria_fk = @idCategoria_fk where producto.idProducto = " + producto.IdProducto + ";";
 
             SqlCommand sqlCommand;
 
@@ -116,20 +106,18 @@ namespace CapaPersistencia.ADO_SQLServer
 
         public void eliminar(long idProducto)
         {
-            String query = "delete from producto"+
-                           "where producto.idProducto = " + idProducto + ";";
+            String query = "update producto set estado = 0 where producto.idProducto = " + idProducto;
 
             SqlCommand sqlCommand;
 
             sqlCommand = gestorSQL.obtenerComandoSQL(query);
             sqlCommand.ExecuteNonQuery();
         }
-        public List<Producto> listarProductosDeCategoria(Categoria categoria)
+        public List<Producto> listarProductosDeCategoria(long idCategoria)
         {
             List<Producto> productos = new List<Producto>();
 
-            String query = "select * from producto" +
-                          "where producto.idCategoria_fk = idCategoria_fk"; ;
+            String query = "select * from producto where producto.idCategoria_fk = "+ idCategoria+ "and producto.estado = 1;"; 
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             while (resultadoSQL.Read())
@@ -144,7 +132,7 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             List<Producto> productos = new List<Producto>();
 
-            String query = "select *from producto";
+            String query = "select producto.* from producto where producto.estado = 1;;";
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             while (resultadoSQL.Read())
@@ -171,19 +159,17 @@ namespace CapaPersistencia.ADO_SQLServer
 
         }
 
-        public void disminuirStock(int numero,Producto producto)
+        public void disminuirStock(Producto producto)
         {
-            String query = "update producto" +
-                               "set" +
-                                  "stock = @stock" +
-                              "where producto.idProducto = "+producto.IdProducto ;
+            String query = "update producto set stock = @stock where producto.idProducto = "+producto.IdProducto ;
 
             SqlCommand sqlCommand;
 
             sqlCommand = gestorSQL.obtenerComandoSQL(query);
 
-            sqlCommand.Parameters.AddWithValue("@stock", producto.Stock - numero);
-
+            sqlCommand.Parameters.AddWithValue("@stock", producto.Stock);
+            sqlCommand.ExecuteNonQuery();
         }
     }
+    
 }

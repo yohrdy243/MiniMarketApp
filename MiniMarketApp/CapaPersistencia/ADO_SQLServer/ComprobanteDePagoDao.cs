@@ -23,15 +23,15 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             ComprobanteDePago comprobanteDePago = new ComprobanteDePago();
 
-            comprobanteDePago.IdComprobante = resultadoSQL.GetInt32(0);
-            comprobanteDePago.NumeroComprobante = resultadoSQL.GetInt32(1);
+            comprobanteDePago.IdComprobante = resultadoSQL.GetInt64(0);
+            comprobanteDePago.NumeroComprobante = resultadoSQL.GetInt64(1);
             comprobanteDePago.Nombre = resultadoSQL.GetString(2);
             comprobanteDePago.Fecha = resultadoSQL.GetDateTime(3);
             comprobanteDePago.Direccion = resultadoSQL.GetString(4);
-            comprobanteDePago.Dni = resultadoSQL.GetInt32(5);
-            comprobanteDePago.Igv = resultadoSQL.GetFloat(6);
-            comprobanteDePago.PrecioNeto = resultadoSQL.GetFloat(7);
-            comprobanteDePago.PrecioTotal = resultadoSQL.GetFloat(8);
+            comprobanteDePago.Dni = resultadoSQL.GetInt64(5);
+            comprobanteDePago.Igv = float.Parse(resultadoSQL.GetDouble(6).ToString());
+            comprobanteDePago.PrecioNeto = float.Parse(resultadoSQL.GetDouble(7).ToString());
+            comprobanteDePago.PrecioTotal = float.Parse(resultadoSQL.GetDouble(8).ToString());
 
             return comprobanteDePago; 
         }
@@ -39,8 +39,7 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             ComprobanteDePago comprobanteDePago = new ComprobanteDePago();
 
-            String query = "select *from comprobanteDePago"+
-                           "where comprobanteDePago.idComprobante = " + idComprobanteDePago;
+            String query = "select *from comprobanteDePago where comprobanteDePago.idComprobante = " + idComprobanteDePago;
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             if (resultadoSQL.Read())
@@ -59,8 +58,7 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             List<ComprobanteDePago> comprobantesDePago = new List<ComprobanteDePago>();
 
-            String query = "select *from comprobanteDePago"+
-                           "where comprobanteDePago.dni = "+dni;
+            String query = "select *from comprobanteDePago where comprobanteDePago.dni = "+dni;
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             while (resultadoSQL.Read())
@@ -74,8 +72,7 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             List<ComprobanteDePago> comprobantesDePago = new List<ComprobanteDePago>();
 
-            String query = "select *from comprobanteDePago"+
-                           "where comprobanteDePago.nombre LIKE '%" + nombre +"%';";
+            String query = "select *from comprobanteDePago where comprobanteDePago.nombre LIKE '%" + nombre +"%';";
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             while (resultadoSQL.Read())
@@ -87,7 +84,7 @@ namespace CapaPersistencia.ADO_SQLServer
 
         public void crearComprobanteDePago(ComprobanteDePago comprobanteDePago)
         {
-            String query = "insert into comprobanteDePago(numeroComprobante,nombre,fecha,direccion,dni,igv,precioNeto,precioTotal"+
+            String query = "insert into comprobanteDePago(numeroComprobante,nombre,fecha,direccion,dni,igv,precioNeto,precioTotal)"+
                            "values(@numeroComprobante, @nombre, @fecha, @direccion, @dni, @igv, @precioNeto, @precioTotal)";
             
             SqlCommand sqlCommand;
@@ -174,6 +171,25 @@ namespace CapaPersistencia.ADO_SQLServer
             return comprobantesDePago;
 
 
+        }
+
+        public ComprobanteDePago obtenerComprobanteDePagoGuardado()
+        {
+            ComprobanteDePago comprobanteDePago = new ComprobanteDePago();
+
+            String query = "SELECT TOP 1 * FROM comprobanteDePago ORDER BY comprobanteDePago.idComprobante DESC ";
+
+            SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
+            if (resultadoSQL.Read())
+            {
+                comprobanteDePago = obtenerComprobanteDePago(resultadoSQL);
+            }
+            else
+            {
+                return null;
+            }
+
+            return comprobanteDePago;
         }
     }
 }

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2DFB3BDB-2B48-49CB-B2A3-FB6B6AD493BA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>CapaPresentacion</RootNamespace>
-    <AssemblyName>CapaPresentacion</AssemblyName>
+    <RootNamespace>MiniMarketApp</RootNamespace>
+    <AssemblyName>MiniMarketApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,41 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\AgregarProductoForm.cs">
+    <Compile Include="Formularios\ElegirProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\AgregarProductoForm.Designer.cs">
-      <DependentUpon>AgregarProductoForm.cs</DependentUpon>
+    <Compile Include="Formularios\ElegirProducto.Designer.cs">
+      <DependentUpon>ElegirProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormElimniarProducto.cs">
+    <Compile Include="Formularios\AdministrarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormElimniarProducto.Designer.cs">
-      <DependentUpon>FormElimniarProducto.cs</DependentUpon>
+    <Compile Include="Formularios\AdministrarProducto.Designer.cs">
+      <DependentUpon>AdministrarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormEditarProducto.cs">
+    <Compile Include="Formularios\Menú.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormEditarProducto.Designer.cs">
-      <DependentUpon>FormEditarProducto.cs</DependentUpon>
+    <Compile Include="Formularios\Menú.Designer.cs">
+      <DependentUpon>Menú.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormMenú.cs">
+    <Compile Include="Formularios\Ingresar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormMenú.Designer.cs">
-      <DependentUpon>FormMenú.cs</DependentUpon>
+    <Compile Include="Formularios\Ingresar.Designer.cs">
+      <DependentUpon>Ingresar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormLogin.cs">
+    <Compile Include="Formularios\AgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormLogin.Designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\FormNuevoProducto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\FormNuevoProducto.Designer.cs">
-      <DependentUpon>FormNuevoProducto.cs</DependentUpon>
+    <Compile Include="Formularios\AgregarProducto.Designer.cs">
+      <DependentUpon>AgregarProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\MantenedorProducto.cs">
       <SubType>Form</SubType>
@@ -96,23 +90,21 @@
     <Compile Include="Formularios\RegistrarVenta.Designer.cs">
       <DependentUpon>RegistrarVenta.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Formularios\AgregarProductoForm.resx">
-      <DependentUpon>AgregarProductoForm.cs</DependentUpon>
+    <Compile Include="Servicios\Validaciones.cs" />
+    <EmbeddedResource Include="Formularios\ElegirProducto.resx">
+      <DependentUpon>ElegirProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormElimniarProducto.resx">
-      <DependentUpon>FormElimniarProducto.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\AdministrarProducto.resx">
+      <DependentUpon>AdministrarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormEditarProducto.resx">
-      <DependentUpon>FormEditarProducto.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Ingresar.resx">
+      <DependentUpon>Ingresar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Menú.resx">
+      <DependentUpon>Menú.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormMenú.resx">
-      <DependentUpon>FormMenú.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormNuevoProducto.resx">
-      <DependentUpon>FormNuevoProducto.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\AgregarProducto.resx">
+      <DependentUpon>AgregarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MantenedorProducto.resx">
       <DependentUpon>MantenedorProducto.cs</DependentUpon>
@@ -125,6 +117,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Formularios\RegistrarVenta.resx">
       <DependentUpon>RegistrarVenta.cs</DependentUpon>
@@ -152,5 +145,6 @@
       <Name>CapaDominio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

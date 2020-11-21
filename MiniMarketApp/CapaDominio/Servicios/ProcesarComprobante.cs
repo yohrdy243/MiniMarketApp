@@ -26,5 +26,12 @@ namespace CapaDominio.Servicios
 
             return comprobanteDePago;
         }
+
+        public LineaDeVenta procesarLineaDeVenta(LineaDeVenta lineaDeVenta)
+        {
+            lineaDeVenta.calcularPrecioUnitario();
+            lineaDeVenta.calcularPrecioTotal();   
+            return lineaDeVenta;
+        }
     }
 }

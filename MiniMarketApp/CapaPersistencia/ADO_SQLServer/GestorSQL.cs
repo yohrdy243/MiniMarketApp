@@ -17,8 +17,7 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             try
             {
-                conexion = new SqlConnection();
-                conexion.ConnectionString = "Data Source=(local);Initial Catalog=MiniMarket;Integrated Security=true";
+                conexion = new SqlConnection("Data Source=(local);Initial Catalog=MiniMarket;Integrated Security=true");
                 conexion.Open();
             }
             catch (Exception err)
