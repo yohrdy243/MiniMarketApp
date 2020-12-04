@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>MiniMarketLogo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,6 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\AdministrarComprobante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\AdministrarComprobante.Designer.cs">
+      <DependentUpon>AdministrarComprobante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ElegirFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ElegirFecha.Designer.cs">
+      <DependentUpon>ElegirFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ElegirFechas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ElegirFechas.Designer.cs">
+      <DependentUpon>ElegirFechas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\ElegirProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +78,12 @@
     </Compile>
     <Compile Include="Formularios\AdministrarProducto.Designer.cs">
       <DependentUpon>AdministrarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\MantenedorComprobanteDePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\MantenedorComprobanteDePago.Designer.cs">
+      <DependentUpon>MantenedorComprobanteDePago.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Menú.cs">
       <SubType>Form</SubType>
@@ -91,6 +118,15 @@
       <DependentUpon>RegistrarVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="Servicios\Validaciones.cs" />
+    <EmbeddedResource Include="Formularios\AdministrarComprobante.resx">
+      <DependentUpon>AdministrarComprobante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ElegirFecha.resx">
+      <DependentUpon>ElegirFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ElegirFechas.resx">
+      <DependentUpon>ElegirFechas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ElegirProducto.resx">
       <DependentUpon>ElegirProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Ingresar.resx">
       <DependentUpon>Ingresar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\MantenedorComprobanteDePago.resx">
+      <DependentUpon>MantenedorComprobanteDePago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Menú.resx">
       <DependentUpon>Menú.cs</DependentUpon>
@@ -145,6 +184,11 @@
       <Name>CapaDominio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\MiniMarketLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MiniMarketLogo.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

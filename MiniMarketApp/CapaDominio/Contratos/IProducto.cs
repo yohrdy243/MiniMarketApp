@@ -11,12 +11,14 @@ namespace CapaDominio.Contratos
     {
         void crearProducto(Producto producto);
         List<Producto> listarProductos();
+        List<Producto> listarProductosAlfabeticamente();
+        List<Producto> listarProductosMasVendidos();
         List<Producto> listarProductosDeCategoria(long idCategoria);
         Producto buscar(long idProdcuto);
         List<Producto> buscarPorNombre(String nombre);
         void editar(Producto producto);
         void eliminar(long idProducto);
-        void aumentarStock(int numero,Producto producto);
+        void aumentarStock(Producto producto);
         void disminuirStock(Producto producto);
 
     }

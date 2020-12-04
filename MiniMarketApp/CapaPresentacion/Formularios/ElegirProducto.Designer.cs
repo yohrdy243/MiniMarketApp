@@ -161,7 +161,7 @@ namespace CapaPresentacion
             // 
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtCantidad);
-            this.groupBox1.Location = new System.Drawing.Point(58, 295);
+            this.groupBox1.Location = new System.Drawing.Point(58, 224);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(701, 55);
             this.groupBox1.TabIndex = 14;
@@ -173,7 +173,7 @@ namespace CapaPresentacion
             this.groupBox2.Controls.Add(this.txtIdProducto);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.buscarPorID);
-            this.groupBox2.Location = new System.Drawing.Point(58, 180);
+            this.groupBox2.Location = new System.Drawing.Point(58, 109);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(226, 110);
             this.groupBox2.TabIndex = 15;
@@ -186,7 +186,7 @@ namespace CapaPresentacion
             this.groupBox3.Controls.Add(this.comboBoxCategoria);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.btnBuscarPorCategoria);
-            this.groupBox3.Location = new System.Drawing.Point(529, 180);
+            this.groupBox3.Location = new System.Drawing.Point(529, 109);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(230, 110);
             this.groupBox3.TabIndex = 16;
@@ -198,7 +198,7 @@ namespace CapaPresentacion
             this.groupBox4.Controls.Add(this.txtNombreProducto);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.btnBuscarPorNombre);
-            this.groupBox4.Location = new System.Drawing.Point(290, 180);
+            this.groupBox4.Location = new System.Drawing.Point(290, 109);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(233, 110);
             this.groupBox4.TabIndex = 17;
@@ -208,10 +208,10 @@ namespace CapaPresentacion
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(219, 59);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(283, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(389, 61);
+            this.label3.Size = new System.Drawing.Size(273, 42);
             this.label3.TabIndex = 19;
             this.label3.Text = "Elegir Producto";
             // 
@@ -233,7 +233,7 @@ namespace CapaPresentacion
             this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProductos.EnableHeadersVisualStyles = false;
-            this.tablaProductos.Location = new System.Drawing.Point(58, 356);
+            this.tablaProductos.Location = new System.Drawing.Point(58, 285);
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -249,13 +249,14 @@ namespace CapaPresentacion
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tablaProductos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.tablaProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaProductos.Size = new System.Drawing.Size(713, 339);
+            this.tablaProductos.Size = new System.Drawing.Size(703, 266);
             this.tablaProductos.TabIndex = 20;
             this.tablaProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaProductos_CellClick);
+            this.tablaProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaProductos_CellFormatting);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(52, 709);
+            this.button1.Location = new System.Drawing.Point(52, 557);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 21;
@@ -267,7 +268,7 @@ namespace CapaPresentacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 772);
+            this.ClientSize = new System.Drawing.Size(841, 590);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tablaProductos);
             this.Controls.Add(this.label3);

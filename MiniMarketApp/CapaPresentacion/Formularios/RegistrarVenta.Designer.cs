@@ -29,9 +29,9 @@ namespace CapaPresentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +41,8 @@ namespace CapaPresentacion
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtxDniCliente = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,8 +53,15 @@ namespace CapaPresentacion
             this.lblPrecioTotal = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnGuardarComprobante = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblVuelto = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPaga = new System.Windows.Forms.TextBox();
+            this.PAgo = new System.Windows.Forms.Label();
+            this.lblAlerta = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNombreCliente
@@ -93,7 +102,7 @@ namespace CapaPresentacion
             // 
             // btnAgregarProducto
             // 
-            this.btnAgregarProducto.Location = new System.Drawing.Point(134, 548);
+            this.btnAgregarProducto.Location = new System.Drawing.Point(65, 477);
             this.btnAgregarProducto.Name = "btnAgregarProducto";
             this.btnAgregarProducto.Size = new System.Drawing.Size(189, 23);
             this.btnAgregarProducto.TabIndex = 15;
@@ -105,7 +114,7 @@ namespace CapaPresentacion
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(743, 562);
+            this.label2.Location = new System.Drawing.Point(837, 479);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 25);
             this.label2.TabIndex = 17;
@@ -115,7 +124,7 @@ namespace CapaPresentacion
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(827, 597);
+            this.label3.Location = new System.Drawing.Point(921, 514);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 25);
             this.label3.TabIndex = 19;
@@ -125,7 +134,7 @@ namespace CapaPresentacion
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(696, 633);
+            this.label4.Location = new System.Drawing.Point(790, 550);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(171, 33);
             this.label4.TabIndex = 21;
@@ -133,6 +142,8 @@ namespace CapaPresentacion
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.txtCorreo);
             this.groupBox2.Controls.Add(this.txtxDniCliente);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
@@ -141,12 +152,28 @@ namespace CapaPresentacion
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtDireccionCliente);
-            this.groupBox2.Location = new System.Drawing.Point(66, 125);
+            this.groupBox2.Location = new System.Drawing.Point(66, 75);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(947, 102);
+            this.groupBox2.Size = new System.Drawing.Size(947, 119);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Del Cliente";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(23, 91);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(94, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Correo Electrónico";
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.Location = new System.Drawing.Point(123, 88);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(436, 20);
+            this.txtCorreo.TabIndex = 19;
             // 
             // txtxDniCliente
             // 
@@ -189,35 +216,35 @@ namespace CapaPresentacion
             this.tablaProductos.AllowUserToDeleteRows = false;
             this.tablaProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.tablaProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.tablaProductos.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.tablaProductos.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tablaProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaProductos.EnableHeadersVisualStyles = false;
-            this.tablaProductos.Location = new System.Drawing.Point(134, 233);
+            this.tablaProductos.Location = new System.Drawing.Point(66, 199);
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.tablaProductos.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tablaProductos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tablaProductos.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.tablaProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaProductos.Size = new System.Drawing.Size(806, 309);
+            this.tablaProductos.Size = new System.Drawing.Size(947, 270);
             this.tablaProductos.TabIndex = 24;
             this.tablaProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaProductos_CellClick);
             // 
@@ -225,7 +252,7 @@ namespace CapaPresentacion
             // 
             this.lblPrecioNeto.AutoSize = true;
             this.lblPrecioNeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioNeto.Location = new System.Drawing.Point(873, 562);
+            this.lblPrecioNeto.Location = new System.Drawing.Point(967, 479);
             this.lblPrecioNeto.Name = "lblPrecioNeto";
             this.lblPrecioNeto.Size = new System.Drawing.Size(42, 25);
             this.lblPrecioNeto.TabIndex = 25;
@@ -235,7 +262,7 @@ namespace CapaPresentacion
             // 
             this.lblIgv.AutoSize = true;
             this.lblIgv.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIgv.Location = new System.Drawing.Point(874, 597);
+            this.lblIgv.Location = new System.Drawing.Point(968, 514);
             this.lblIgv.Name = "lblIgv";
             this.lblIgv.Size = new System.Drawing.Size(42, 25);
             this.lblIgv.TabIndex = 26;
@@ -245,7 +272,7 @@ namespace CapaPresentacion
             // 
             this.lblPrecioTotal.AutoSize = true;
             this.lblPrecioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioTotal.Location = new System.Drawing.Point(872, 633);
+            this.lblPrecioTotal.Location = new System.Drawing.Point(966, 550);
             this.lblPrecioTotal.Name = "lblPrecioTotal";
             this.lblPrecioTotal.Size = new System.Drawing.Size(55, 33);
             this.lblPrecioTotal.TabIndex = 27;
@@ -255,7 +282,7 @@ namespace CapaPresentacion
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(418, 55);
+            this.label8.Location = new System.Drawing.Point(421, 33);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(246, 39);
             this.label8.TabIndex = 28;
@@ -263,7 +290,7 @@ namespace CapaPresentacion
             // 
             // btnGuardarComprobante
             // 
-            this.btnGuardarComprobante.Location = new System.Drawing.Point(134, 636);
+            this.btnGuardarComprobante.Location = new System.Drawing.Point(65, 599);
             this.btnGuardarComprobante.Name = "btnGuardarComprobante";
             this.btnGuardarComprobante.Size = new System.Drawing.Size(189, 23);
             this.btnGuardarComprobante.TabIndex = 29;
@@ -271,11 +298,78 @@ namespace CapaPresentacion
             this.btnGuardarComprobante.UseVisualStyleBackColor = true;
             this.btnGuardarComprobante.Click += new System.EventHandler(this.btnGuardarComprobante_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MiniMarketApp.Properties.Resources.MiniMarketLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(975, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 110);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblVuelto
+            // 
+            this.lblVuelto.AutoSize = true;
+            this.lblVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVuelto.Location = new System.Drawing.Point(969, 594);
+            this.lblVuelto.Name = "lblVuelto";
+            this.lblVuelto.Size = new System.Drawing.Size(42, 25);
+            this.lblVuelto.TabIndex = 32;
+            this.lblVuelto.Text = "0.0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(888, 594);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 25);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Vuelto";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // txtPaga
+            // 
+            this.txtPaga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaga.Location = new System.Drawing.Point(402, 480);
+            this.txtPaga.Name = "txtPaga";
+            this.txtPaga.Size = new System.Drawing.Size(287, 26);
+            this.txtPaga.TabIndex = 33;
+            this.txtPaga.TextChanged += new System.EventHandler(this.txtPaga_TextChanged);
+            this.txtPaga.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtEntrada_KeyUp);
+            // 
+            // PAgo
+            // 
+            this.PAgo.AutoSize = true;
+            this.PAgo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PAgo.Location = new System.Drawing.Point(334, 481);
+            this.PAgo.Name = "PAgo";
+            this.PAgo.Size = new System.Drawing.Size(62, 25);
+            this.PAgo.TabIndex = 34;
+            this.PAgo.Text = "Paga";
+            // 
+            // lblAlerta
+            // 
+            this.lblAlerta.AutoSize = true;
+            this.lblAlerta.ForeColor = System.Drawing.Color.Red;
+            this.lblAlerta.Location = new System.Drawing.Point(399, 509);
+            this.lblAlerta.Name = "lblAlerta";
+            this.lblAlerta.Size = new System.Drawing.Size(288, 13);
+            this.lblAlerta.TabIndex = 35;
+            this.lblAlerta.Text = "Se necesita una cantidad mas grande para hacer el calculo";
+            // 
             // RegistrarVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 697);
+            this.ClientSize = new System.Drawing.Size(1086, 658);
+            this.Controls.Add(this.lblAlerta);
+            this.Controls.Add(this.PAgo);
+            this.Controls.Add(this.txtPaga);
+            this.Controls.Add(this.lblVuelto);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnGuardarComprobante);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblPrecioTotal);
@@ -289,9 +383,11 @@ namespace CapaPresentacion
             this.Controls.Add(this.btnAgregarProducto);
             this.Name = "RegistrarVenta";
             this.Text = "Registrar Venta";
+            this.Load += new System.EventHandler(this.RegistrarVenta_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,5 +413,13 @@ namespace CapaPresentacion
         private System.Windows.Forms.Label lblPrecioTotal;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnGuardarComprobante;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblVuelto;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtPaga;
+        private System.Windows.Forms.Label PAgo;
+        private System.Windows.Forms.Label lblAlerta;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtCorreo;
     }
 }

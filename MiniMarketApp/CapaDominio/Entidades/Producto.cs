@@ -43,6 +43,20 @@ namespace CapaDominio.Entidades
             set { nombre = value; }
         }
 
+        private Boolean esActivo;
+        public Boolean EsActivo
+        {
+            get { return esActivo; }
+            set { esActivo = value; }
+        }
+
+        private Boolean esMasVendido;
+        public Boolean EsMasVendido
+        {
+            get { return esMasVendido; }
+            set { esMasVendido = value; }
+        }
+
         private Categoria categoria;
         public Categoria Categoria
         {

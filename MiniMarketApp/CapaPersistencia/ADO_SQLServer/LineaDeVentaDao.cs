@@ -42,8 +42,7 @@ namespace CapaPersistencia.ADO_SQLServer
         {
             LineaDeVenta lineasDeVenta = new LineaDeVenta();
 
-            String query = "select *from lineaDeVenta"+
-                           "where lineaDeVenta.idLineaDeVenta = " + idLineaDeVenta;
+            String query = "select *from lineaDeVenta where lineaDeVenta.idLineaDeVenta = " + idLineaDeVenta;
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             if (resultadoSQL.Read())
@@ -57,7 +56,6 @@ namespace CapaPersistencia.ADO_SQLServer
 
             return lineasDeVenta;
         }
-
         public void crearLineaDeVenta(LineaDeVenta lineaDeVenta)
         {
 
@@ -76,15 +74,9 @@ namespace CapaPersistencia.ADO_SQLServer
             
             sqlCommand.ExecuteNonQuery();
         }
-
         public void editarLineaDeVenta(LineaDeVenta lineaDeVenta)
         {
-            String query = "update lineaDeVenta"+
-                           "set"+
-                               "cantidad = @cantidad,"+
-                               "precioTotal = @precioTotal,"+
-                               "precioUnitario = @precioUnitario"+
-                            "where lineaDeVenta.idLineaDeVenta = "+ lineaDeVenta.IdLineaDeVenta;
+            String query = "update lineaDeVenta set cantidad = @cantidad precioTotal = @precioTotal precioUnitario = @precioUnitario where lineaDeVenta.idLineaDeVenta = "+ lineaDeVenta.IdLineaDeVenta;
 
             SqlCommand sqlCommand;
 
@@ -96,18 +88,15 @@ namespace CapaPersistencia.ADO_SQLServer
 
             sqlCommand.ExecuteNonQuery();
         }
-
         public void eliminarLineaDeVenta(long idLineaDeVenta)
         {
-            String query = "delete from lineaDeVenta"+
-                           "where lineaDeVenta.idLineaDeVenta = "+idLineaDeVenta;
+            String query = "delete from lineaDeVenta where lineaDeVenta.idLineaDeVenta = "+idLineaDeVenta;
 
             SqlCommand sqlCommand;
 
             sqlCommand = gestorSQL.obtenerComandoSQL(query);
             sqlCommand.ExecuteNonQuery();
         }
-
         public List<LineaDeVenta> listarLineasDeVenta()
         {
             List<LineaDeVenta> lineasDeVenta = new List<LineaDeVenta>();
@@ -124,13 +113,11 @@ namespace CapaPersistencia.ADO_SQLServer
             return lineasDeVenta;
 
         }
-
         public List<LineaDeVenta> listarLineasDeVentaDeComprobante(long idcomprobanteDePago)
         {
             List<LineaDeVenta> lineasDeVenta = new List<LineaDeVenta>();
 
-            String query = "select * from lineaDeVenta"+
-                           "where lineaDeVenta.idComprobante_fk = " +idcomprobanteDePago;
+            String query = "select * from lineaDeVenta where lineaDeVenta.idComprobante_fk = " +idcomprobanteDePago;
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             while (resultadoSQL.Read())
@@ -142,13 +129,11 @@ namespace CapaPersistencia.ADO_SQLServer
             return lineasDeVenta;
 
         }
-
         public List<LineaDeVenta> listarLineasDeVentaDeProducto(long idProducto)
         {
             List<LineaDeVenta> lineasDeVenta = new List<LineaDeVenta>();
 
-            String query = "select * from lineaDeVenta"+
-                           "where lineaDeVenta.idProducto_fk = "+idProducto;
+            String query = "select * from lineaDeVenta where lineaDeVenta.idProducto_fk = "+idProducto;
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
             while (resultadoSQL.Read())
@@ -159,12 +144,42 @@ namespace CapaPersistencia.ADO_SQLServer
 
             return lineasDeVenta;
         }
-
-        public List<LineaDeVenta> listarLineasDeVentaDelDia()
+        public List<LineaDeVenta> listarLineasDeVentaDeUnaFecha(DateTime fecha)
         {
             List<LineaDeVenta> lineasDeVenta = new List<LineaDeVenta>();
 
-            String query = "select lineaDeVenta.* from lineaDeVenta,comprobanteDePago where lineaDeVenta.idComprobante_fk = comprobanteDePago.idComprobante and comprobanteDePago.fecha = '" + DateTime.Now.Date.ToString() + "' order by  lineaDeVenta.idProducto_fk asc";
+            String query = "select lineaDeVenta.* from lineaDeVenta,comprobanteDePago where lineaDeVenta.idComprobante_fk = comprobanteDePago.idComprobante and comprobanteDePago.fecha = '" + fecha.ToString("yyyy-M-dd") + "' order by  lineaDeVenta.idProducto_fk asc";
+
+            
+            SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
+
+            while (resultadoSQL.Read())
+            {
+                lineasDeVenta.Add(obtenerLineaDeVenta(resultadoSQL));
+            }
+
+            return lineasDeVenta;
+        }
+        public LineaDeVenta obtenerPivote(DateTime fecha)
+        {
+            LineaDeVenta lineaDeVenta = new LineaDeVenta();
+
+            String query = "select top 1 lineaDeVenta.* from lineaDeVenta,comprobanteDePago where lineaDeVenta.idComprobante_fk = comprobanteDePago.idComprobante and comprobanteDePago.fecha = '" + fecha.ToString("yyyy-M-dd") + "' order by  lineaDeVenta.idProducto_fk asc";
+
+            SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
+
+            if (resultadoSQL.Read())
+            {
+                lineaDeVenta = obtenerLineaDeVenta(resultadoSQL);
+            }
+
+            return lineaDeVenta;
+        }
+        public List<LineaDeVenta> listarLineasDeVentaEntreFechas(DateTime fecha1, DateTime fecha2)
+        {
+            List<LineaDeVenta> lineasDeVenta = new List<LineaDeVenta>();
+
+            String query = "select lineaDeVenta.* from lineaDeVenta,comprobanteDePago where lineaDeVenta.idComprobante_fk = comprobanteDePago.idComprobante and comprobanteDePago.fecha BETWEEN '"+ fecha1.ToString("yyy-M-dd") + "' and '" + fecha2.ToString("yyyy-M-dd") +"'  order by  lineaDeVenta.idProducto_fk asc;";
 
             SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
 
@@ -174,6 +189,21 @@ namespace CapaPersistencia.ADO_SQLServer
             }
 
             return lineasDeVenta;
+        }
+        public LineaDeVenta obtenerPivoteEntreFechas(DateTime fecha1, DateTime fecha2)
+        {
+            LineaDeVenta lineaDeVenta = new LineaDeVenta();
+
+            String query = "select top 1 lineaDeVenta.* from lineaDeVenta,comprobanteDePago where lineaDeVenta.idComprobante_fk = comprobanteDePago.idComprobante and comprobanteDePago.fecha BETWEEN '" + fecha1.ToString("yyy-M-dd") + "' and '" + fecha2.ToString("yyyy-M-dd") + "'  order by  lineaDeVenta.idProducto_fk asc;";
+
+            SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
+
+            if (resultadoSQL.Read())
+            {
+                lineaDeVenta = obtenerLineaDeVenta(resultadoSQL);
+            }
+
+            return lineaDeVenta;
         }
     }
 }

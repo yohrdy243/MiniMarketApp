@@ -41,6 +41,35 @@ namespace CapaAplicacion.Servicios
             
             return productos;
         }
+        public List<Producto> listarProductosAlfabeticamente()
+        {
+            gestorAccesoDatos.abrirConexion();
+            List<Producto> productos = productoService.listarProductosAlfabeticamente();
+            gestorAccesoDatos.cerrarConexion();
+            foreach (Producto producto in productos)
+            {
+                gestorAccesoDatos.abrirConexion();
+                producto.Categoria = categoriaService.buscarCategoria(producto.Categoria.IdCategoria);
+                gestorAccesoDatos.cerrarConexion();
+            }
+
+            return productos;
+        }
+
+        public List<Producto> listarProductosMasVendidos()
+        {
+            gestorAccesoDatos.abrirConexion();
+            List<Producto> productos = productoService.listarProductosMasVendidos();
+            gestorAccesoDatos.cerrarConexion();
+            foreach (Producto producto in productos)
+            {
+                gestorAccesoDatos.abrirConexion();
+                producto.Categoria = categoriaService.buscarCategoria(producto.Categoria.IdCategoria);
+                gestorAccesoDatos.cerrarConexion();
+            }
+
+            return productos;
+        }
         public List<Producto> listarProductosPorNombre(String nombre)
         {
             gestorAccesoDatos.abrirConexion();
@@ -100,6 +129,13 @@ namespace CapaAplicacion.Servicios
         {
             gestorAccesoDatos.abrirConexion();
             productoService.disminuirStock(producto);
+            gestorAccesoDatos.cerrarConexion();
+        }
+
+        public void aumentarStock(Producto producto)
+        {
+            gestorAccesoDatos.abrirConexion();
+            productoService.aumentarStock(producto);
             gestorAccesoDatos.cerrarConexion();
         }
         public void eliminarProducto(long IdProducto)
@@ -202,16 +238,43 @@ namespace CapaAplicacion.Servicios
         {
             gestorAccesoDatos.abrirConexion();
             List<ComprobanteDePago> comprobantesDePago = comprobanteDePagoService.listarComprobanteDePago();
-            foreach (ComprobanteDePago comprobanteDePago in comprobantesDePago)
-            {
-                comprobanteDePago.LineasDeVenta = lineaDeVentaService.listarLineasDeVentaDeComprobante(comprobanteDePago.IdComprobante);
-                foreach (LineaDeVenta lineaDeVenta in comprobanteDePago.LineasDeVenta)
-                {
-                    lineaDeVenta.Producto = buscarProducto(lineaDeVenta.Producto.IdProducto);
-                }
-            }
-            gestorAccesoDatos.cerrarConexion();
+            return comprobantesDePago;
+        }
+        public List<ComprobanteDePago> listarComprobanteDePagoAlphabeticamente()
+        {
+            gestorAccesoDatos.abrirConexion();
+            List<ComprobanteDePago> comprobantesDePago = comprobanteDePagoService.listarComprobanteDePagoOrdenAlphabetico();
+            return comprobantesDePago;
+        }
+        public List<ComprobanteDePago> listarComprobanteDePagoAntiguoNuevo()
+        {
+            gestorAccesoDatos.abrirConexion();
+            List<ComprobanteDePago> comprobantesDePago = comprobanteDePagoService.listarComprobanteDePagoFechaAntiguaActual();
+            return comprobantesDePago;
+        }
+        public List<ComprobanteDePago> listarComprobanteDePagoNuevoAntiguo()
+        {
+            gestorAccesoDatos.abrirConexion();
+            List<ComprobanteDePago> comprobantesDePago = comprobanteDePagoService.listarComprobanteDePagoFechaActualAntigua();
+            return comprobantesDePago;
+        }
 
+        public List<ComprobanteDePago> listarComprobanteDePagoPorNombre(String nombre)
+        {
+            gestorAccesoDatos.abrirConexion();
+            List<ComprobanteDePago> comprobantesDePago = comprobanteDePagoService.buscarComprobanteDePagoPorNombre(nombre);
+            return comprobantesDePago;
+        }
+        public List<ComprobanteDePago> listarComprobanteDePagoPorDni(long dni)
+        {
+            gestorAccesoDatos.abrirConexion();
+            List<ComprobanteDePago> comprobantesDePago = comprobanteDePagoService.buscarComprobanteDePagoPorDni(dni);
+            return comprobantesDePago;
+        }
+        public List<ComprobanteDePago> listarComprobanteDePagoPorfecha(DateTime fecha)
+        {
+            gestorAccesoDatos.abrirConexion();
+            List<ComprobanteDePago> comprobantesDePago = comprobanteDePagoService.listarComprobanteDePagoPorFecha(fecha);
             return comprobantesDePago;
         }
 

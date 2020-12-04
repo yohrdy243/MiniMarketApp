@@ -24,6 +24,8 @@ namespace CapaPresentacion
         public RegistrarVenta()
         {
             InitializeComponent();
+            Icon icon = new Icon(System.AppDomain.CurrentDomain.BaseDirectory + @"..\..\Resources\MiniMarketLogo.ico");
+            this.Icon = icon;
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -74,7 +76,7 @@ namespace CapaPresentacion
 
             comprobanteDePago.LineasDeVenta = lineasDeVenta;
 
-            comprobanteDePago = procesar.procesarComprobante(comprobanteDePago);
+            comprobanteDePago.procesarComprobante();
             lblPrecioNeto.Text = comprobanteDePago.PrecioNeto.ToString();
             lblIgv.Text = comprobanteDePago.Igv.ToString();
             lblPrecioTotal.Text = comprobanteDePago.PrecioTotal.ToString();
@@ -117,6 +119,21 @@ namespace CapaPresentacion
 
             lineasDeVenta.Add(lineaDeVenta);
 
+
+            if (String.IsNullOrEmpty(txtPaga.Text))
+            {
+                txtPaga.Text = "0.0";
+            }
+            else if (float.Parse(txtPaga.Text) - comprobanteDePago.PrecioTotal > 0)
+            {
+                lblAlerta.Visible = false;
+                lblVuelto.Text = (float.Parse(txtPaga.Text) - comprobanteDePago.PrecioTotal).ToString();
+            }
+            else
+            {
+                lblAlerta.Visible = true;
+            }
+
             listarLineasDeVenta();
         }
 
@@ -130,8 +147,20 @@ namespace CapaPresentacion
             {
                 lineasDeVenta.RemoveAt(nCelda);
             }
-            
 
+            if (String.IsNullOrEmpty(txtPaga.Text))
+            {
+                txtPaga.Text = "0.0";
+            }
+            else if (float.Parse(txtPaga.Text) - comprobanteDePago.PrecioTotal > 0)
+            {
+                lblAlerta.Visible = false;
+                lblVuelto.Text = (float.Parse(txtPaga.Text) - comprobanteDePago.PrecioTotal).ToString();
+            }
+            else
+            {
+                lblAlerta.Visible = true;
+            }
             listarLineasDeVenta();
         }
 
@@ -139,26 +168,27 @@ namespace CapaPresentacion
         {
             if (String.IsNullOrEmpty(txtNombreCliente.Text))
             {
-                MessageBox.Show("El nombre del Cliente esta vacio", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombreCliente.Text = " ";
             }
-            else if (String.IsNullOrEmpty(txtxDniCliente.Text))
+            if (String.IsNullOrEmpty(txtxDniCliente.Text))
             {
-                MessageBox.Show("El DNI del Cliente esta vacio", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtxDniCliente.Text = "1";
             }
-            else if (String.IsNullOrEmpty(txtDireccionCliente.Text))
+            if (String.IsNullOrEmpty(txtDireccionCliente.Text))
             {
-                MessageBox.Show("La direccion del Cliente esta vacio", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDireccionCliente.Text = " ";
             }
-            else if (long.Parse(txtxDniCliente.Text) < 10000000)
+            if (txtCorreo.Text.Equals("@") || String.IsNullOrEmpty(txtCorreo.Text))
             {
-                MessageBox.Show("El DNI del Cliente no es valido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCorreo.Text = " ";
             }
-            else if (lineasDeVenta.Count == 0)
+            if (lineasDeVenta.Count == 0)
             {
                 MessageBox.Show("No hay productos seleccionados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
+                
                 DialogResult dialogResult = MessageBox.Show("¿Desea registrar la Venta?", "Guardar Comprobante", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult == DialogResult.Yes)
@@ -187,12 +217,48 @@ namespace CapaPresentacion
                     txtDireccionCliente.Text = "";
                     txtNombreCliente.Text = "";
                     txtxDniCliente.Text = "";
+                    txtCorreo.Text = "@";
                     lblIgv.Text = "0.0";
                     lblPrecioNeto.Text = "0.0";
                     lblPrecioTotal.Text = "0.0";
+                    lblVuelto.Text = "0.0";
                 }
             }
 
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEntrada_KeyUp(object sender, KeyEventArgs e)
+        {
+            Validaciones.ValidarCampoDecimal((TextBox)sender);
+        }
+
+        private void txtPaga_TextChanged(object sender, EventArgs e)
+        {
+            
+            if(String.IsNullOrEmpty(txtPaga.Text))
+            {
+                txtPaga.Text = "0.0";
+            }
+            else if (float.Parse(txtPaga.Text) - comprobanteDePago.PrecioTotal > 0)
+            {
+                lblAlerta.Visible = false;
+                lblVuelto.Text = (float.Parse(txtPaga.Text) - comprobanteDePago.PrecioTotal).ToString();
+            }else
+            {
+                lblAlerta.Visible = true;
+            }
+        }
+
+        private void RegistrarVenta_Load(object sender, EventArgs e)
+        {
+            txtPaga.Text = "0.0";
+            lblAlerta.Visible = false;
+            txtCorreo.Text = "@";
         }
     }
 }

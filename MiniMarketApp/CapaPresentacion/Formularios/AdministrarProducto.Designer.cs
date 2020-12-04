@@ -42,6 +42,8 @@ namespace CapaPresentacion
             this.txtPrecioDeCompra = new System.Windows.Forms.TextBox();
             this.btnGuardarProducto = new System.Windows.Forms.Button();
             this.btnEliminarProducto = new System.Windows.Forms.Button();
+            this.cBoxEsMas = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -145,7 +147,7 @@ namespace CapaPresentacion
             // 
             // btnGuardarProducto
             // 
-            this.btnGuardarProducto.Location = new System.Drawing.Point(184, 294);
+            this.btnGuardarProducto.Location = new System.Drawing.Point(211, 310);
             this.btnGuardarProducto.Name = "btnGuardarProducto";
             this.btnGuardarProducto.Size = new System.Drawing.Size(105, 33);
             this.btnGuardarProducto.TabIndex = 15;
@@ -155,7 +157,7 @@ namespace CapaPresentacion
             // 
             // btnEliminarProducto
             // 
-            this.btnEliminarProducto.Location = new System.Drawing.Point(423, 294);
+            this.btnEliminarProducto.Location = new System.Drawing.Point(407, 310);
             this.btnEliminarProducto.Name = "btnEliminarProducto";
             this.btnEliminarProducto.Size = new System.Drawing.Size(105, 33);
             this.btnEliminarProducto.TabIndex = 27;
@@ -163,11 +165,31 @@ namespace CapaPresentacion
             this.btnEliminarProducto.UseVisualStyleBackColor = true;
             this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
             // 
+            // cBoxEsMas
+            // 
+            this.cBoxEsMas.AutoSize = true;
+            this.cBoxEsMas.Location = new System.Drawing.Point(166, 280);
+            this.cBoxEsMas.Name = "cBoxEsMas";
+            this.cBoxEsMas.Size = new System.Drawing.Size(15, 14);
+            this.cBoxEsMas.TabIndex = 29;
+            this.cBoxEsMas.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(75, 279);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Es Mas Vendido";
+            // 
             // FormEditarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(724, 365);
+            this.Controls.Add(this.cBoxEsMas);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnEliminarProducto);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxCategoria);
@@ -205,5 +227,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.TextBox txtPrecioDeCompra;
         private System.Windows.Forms.Button btnGuardarProducto;
         private System.Windows.Forms.Button btnEliminarProducto;
+        private System.Windows.Forms.CheckBox cBoxEsMas;
+        private System.Windows.Forms.Label label7;
     }
 }

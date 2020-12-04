@@ -71,27 +71,30 @@ namespace CapaDominio.Entidades
             set { igv = value; }
         }
 
+        private String correo;
+
+        public String Correo
+        {
+            get { return correo; }
+            set { correo = value; }
+        }
+
         private List<LineaDeVenta> lineasDeVenta;
         public List<LineaDeVenta> LineasDeVenta
         {
             get { return lineasDeVenta; }
             set { lineasDeVenta = value; }
         }
-
-        public void calcularPrecioNeto()
+        public void procesarComprobante()
         {
             precioNeto = 0;
-            foreach(LineaDeVenta lineaDeVenta in lineasDeVenta)
+            foreach (LineaDeVenta lineaDeVenta in lineasDeVenta)
             {
                 precioNeto = precioNeto + lineaDeVenta.Preciototal;
             }
-        } 
-        public void calcularIgv()
-        {
+
             igv = precioNeto * 0.18f;
-        }
-        public void calcularPrecioTotal()
-        {
+            precioNeto = precioNeto - igv;
             precioTotal = precioNeto + igv;
         }
 

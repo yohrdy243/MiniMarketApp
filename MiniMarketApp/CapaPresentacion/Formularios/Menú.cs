@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CapaAplicacion.Servicios;
 using CapaDominio.Entidades;
 using CapaPresentacion.Servicios;
+using MiniMarketApp.Formularios;
 
 namespace CapaPresentacion
 {
@@ -22,6 +23,8 @@ namespace CapaPresentacion
         public FormMenú()
         {
             InitializeComponent();
+            Icon icon = new Icon(System.AppDomain.CurrentDomain.BaseDirectory + @"..\..\Resources\MiniMarketLogo.ico");
+            this.Icon = icon;
         }
 
         private void registrarVentaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,7 +61,25 @@ namespace CapaPresentacion
 
         private void reporteDiarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            reportes.repoteDiario();
+            reportes.generarReporte(DateTime.Now);
+        }
+
+        private void reportePorFechaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ElegirFecha elegirFecha = new ElegirFecha();
+            elegirFecha.Show();
+        }
+
+        private void comprobantesDePagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantenedorComprobanteDePago mantenedorComprobanteDePago = new MantenedorComprobanteDePago();
+            mantenedorComprobanteDePago.Show();
+        }
+
+        private void reporteEnUnRangoDeTiempoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ElegirFechas elegirFechas = new ElegirFechas();
+            elegirFechas.Show();
         }
     }
 }

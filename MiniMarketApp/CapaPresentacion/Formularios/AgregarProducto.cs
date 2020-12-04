@@ -18,6 +18,8 @@ namespace CapaPresentacion
         public FormNuevoProducto()
         {
             InitializeComponent();
+            Icon icon = new Icon(System.AppDomain.CurrentDomain.BaseDirectory + @"..\..\Resources\MiniMarketLogo.ico");
+            this.Icon = icon;
         }
 
         private void FormNuevoProducto_Load(object sender, EventArgs e)
@@ -63,7 +65,10 @@ namespace CapaPresentacion
                 producto.Stock = Convert.ToInt32(textBox3.Text);
                 producto.PrecioVenta = float.Parse(textBox4.Text);
                 producto.PrecioCompra = float.Parse(textBox2.Text);
+                producto.EsMasVendido = cBoxEsMas.Checked;
                 producto.Categoria = administracionDatos.CategoriaPorNombre(comboBoxCategoria.SelectedItem.ToString());
+
+
                 administracionDatos.guardarProducto(producto);
 
                 MessageBox.Show("El Producto "+ producto.Nombre + " ha sido guardado correctamente", "Producto Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -119,6 +124,11 @@ namespace CapaPresentacion
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

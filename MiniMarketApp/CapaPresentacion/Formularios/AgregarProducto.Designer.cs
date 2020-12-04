@@ -41,11 +41,13 @@ namespace CapaPresentacion
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cBoxEsMas = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(322, 308);
+            this.btnGuardar.Location = new System.Drawing.Point(317, 334);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(105, 33);
             this.btnGuardar.TabIndex = 0;
@@ -152,12 +154,32 @@ namespace CapaPresentacion
             this.label1.TabIndex = 14;
             this.label1.Text = "Agregar Producto";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(81, 294);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Es Mas Vendido";
+            // 
+            // cBoxEsMas
+            // 
+            this.cBoxEsMas.AutoSize = true;
+            this.cBoxEsMas.Location = new System.Drawing.Point(172, 295);
+            this.cBoxEsMas.Name = "cBoxEsMas";
+            this.cBoxEsMas.Size = new System.Drawing.Size(15, 14);
+            this.cBoxEsMas.TabIndex = 17;
+            this.cBoxEsMas.UseVisualStyleBackColor = true;
+            // 
             // FormNuevoProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ClientSize = new System.Drawing.Size(747, 364);
+            this.ClientSize = new System.Drawing.Size(747, 379);
+            this.Controls.Add(this.cBoxEsMas);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxCategoria);
             this.Controls.Add(this.label6);
@@ -192,5 +214,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxCategoria;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox cBoxEsMas;
     }
 }

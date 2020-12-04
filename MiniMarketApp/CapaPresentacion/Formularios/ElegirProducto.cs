@@ -22,6 +22,8 @@ namespace CapaPresentacion
             InitializeComponent();
             this.registrarVenta = registrarVenta;
             listarProductos();
+            Icon icon = new Icon(System.AppDomain.CurrentDomain.BaseDirectory + @"..\..\Resources\MiniMarketLogo.ico");
+            this.Icon = icon;
         }
         private DataTable generarTabla(List<Producto> productos)
         {
@@ -166,6 +168,18 @@ namespace CapaPresentacion
             {
                 MessageBox.Show("El producto " + producto.Nombre + " no tiene el stock suficiente", "Agregar Producto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtCantidad.Text = "";
+            }
+        }
+
+        private void tablaProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (tablaProductos.Columns[e.ColumnIndex].Name == "Stock")
+            {
+                if (Convert.ToInt32(e.Value) <= 5)
+                {
+                    e.CellStyle.ForeColor = Color.White;
+                    e.CellStyle.BackColor = Color.Red;
+                }
             }
         }
     }

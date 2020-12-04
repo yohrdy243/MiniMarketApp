@@ -24,6 +24,8 @@ namespace CapaPresentacion
             InitializeComponent();
             this.producto = producto;
             this.mantendorProducto = mantendorProducto;
+            Icon icon = new Icon(System.AppDomain.CurrentDomain.BaseDirectory + @"..\..\Resources\MiniMarketLogo.ico");
+            this.Icon = icon;
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace CapaPresentacion
 
         private void FormEditarProducto_Load(object sender, EventArgs e)
         {
+            comboBoxCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             List<Categoria> categorias = administracionDatos.listarCategoria();
 
             foreach (Categoria categoria in categorias)
@@ -45,6 +48,7 @@ namespace CapaPresentacion
             txtStock.Text = producto.Stock.ToString();
 
             comboBoxCategoria.Text = producto.Categoria.NombreCategoria;
+            cBoxEsMas.Checked = producto.EsMasVendido;
 
         }
 
@@ -74,7 +78,7 @@ namespace CapaPresentacion
             }
             else if (float.Parse(txtPrecioDeCompra.Text) >= float.Parse(txtPrecioDeVenta.Text))
             {
-                MessageBox.Show("El precio de Venta no puede ser menor al Precio de Compra", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El precio de Venta no puede ser menor o igual al Precio de Compra", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPrecioDeVenta.Text = "";
                 txtPrecioDeCompra.Text = "";
             }
@@ -88,10 +92,12 @@ namespace CapaPresentacion
                 productoActualizar.PrecioVenta = float.Parse(txtPrecioDeVenta.Text);
                 productoActualizar.PrecioCompra = float.Parse(txtPrecioDeCompra.Text);
                 productoActualizar.Categoria = administracionDatos.CategoriaPorNombre(comboBoxCategoria.SelectedItem.ToString());
+                productoActualizar.EsMasVendido = cBoxEsMas.Checked;
+                Console.WriteLine(productoActualizar.EsMasVendido);
                 administracionDatos.editarProducto(productoActualizar);
 
                 MessageBox.Show(producto.Nombre + " se ha editado", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                mantendorProducto.listarProductos();
                 this.Close();
             }
             
@@ -145,6 +151,7 @@ namespace CapaPresentacion
             if (dialogResult == DialogResult.Yes)
             {
                 administracionDatos.eliminarProducto(producto.IdProducto);
+                mantendorProducto.listarProductos();
                 this.Close();
             }
             

@@ -30,9 +30,11 @@ namespace CapaPersistencia.ADO_SQLServer
   
             Categoria categoria = new Categoria();
             categoria.IdCategoria = resultadoSql.GetInt64(5);
-
             producto.Categoria = categoria;
-            
+
+            producto.EsActivo = resultadoSql.GetBoolean(6);
+            producto.EsMasVendido = resultadoSql.GetBoolean(7);
+
             return producto;
         }
         public Producto buscar(long idProducto)
@@ -70,7 +72,7 @@ namespace CapaPersistencia.ADO_SQLServer
 
         public void crearProducto(Producto producto)
         {
-            String query = "insert into producto(nombre,stock,precioCompra,precioVenta,idCategoria_fk,estado) values(@nombre, @stock, @precioCompra, @precioVenta, @idCategoria_fk,1)";
+            String query = "insert into producto(nombre,stock,precioCompra,precioVenta,idCategoria_fk,estado,esMasVendido) values(@nombre, @stock, @precioCompra, @precioVenta, @idCategoria_fk,1,@esMasVendido)";
 
             SqlCommand sqlCommand;
 
@@ -81,6 +83,15 @@ namespace CapaPersistencia.ADO_SQLServer
             sqlCommand.Parameters.AddWithValue("@precioCompra", producto.PrecioCompra);
             sqlCommand.Parameters.AddWithValue("@precioVenta", producto.PrecioVenta);
             sqlCommand.Parameters.AddWithValue("@idCategoria_fk", producto.Categoria.IdCategoria);
+            if (producto.EsMasVendido == true)
+            {
+                sqlCommand.Parameters.AddWithValue("@esMasVendido", 1);
+            }
+            else
+            {
+                sqlCommand.Parameters.AddWithValue("@esMasVendido", 0);
+            }
+           
 
             sqlCommand.ExecuteNonQuery();
 
@@ -89,7 +100,7 @@ namespace CapaPersistencia.ADO_SQLServer
 
         public void editar(Producto producto)
         {
-            String query = "update producto set precioCompra = @precioCompra, precioVenta = @precioVenta, nombre = @nombre, stock = @stock, idCategoria_fk = @idCategoria_fk where producto.idProducto = " + producto.IdProducto + ";";
+            String query = "update producto set precioCompra = @precioCompra, precioVenta = @precioVenta, nombre = @nombre, stock = @stock, esMasVendido = @esMasVendido, idCategoria_fk = @idCategoria_fk where producto.idProducto = " + producto.IdProducto + ";";
 
             SqlCommand sqlCommand;
 
@@ -100,6 +111,14 @@ namespace CapaPersistencia.ADO_SQLServer
             sqlCommand.Parameters.AddWithValue("@precioCompra", producto.PrecioCompra);
             sqlCommand.Parameters.AddWithValue("@precioVenta", producto.PrecioVenta);
             sqlCommand.Parameters.AddWithValue("@idCategoria_fk", producto.Categoria.IdCategoria);
+            if (producto.EsMasVendido == true)
+            {
+                sqlCommand.Parameters.AddWithValue("@esMasVendido", 1);
+            }
+            else
+            {
+                sqlCommand.Parameters.AddWithValue("@esMasVendido", 0);
+            }
 
             sqlCommand.ExecuteNonQuery();
         }
@@ -144,18 +163,16 @@ namespace CapaPersistencia.ADO_SQLServer
 
         }
 
-        public void aumentarStock(int numero, Producto producto)
+        public void aumentarStock(Producto producto)
         {
-            String query = "update producto" +
-                             "set" +
-                                "stock = @stock" +
-                            "where producto.idProducto = " + producto.IdProducto;
+            String query = "update producto set stock = @stock where producto.idProducto = " + producto.IdProducto;
 
             SqlCommand sqlCommand;
 
             sqlCommand = gestorSQL.obtenerComandoSQL(query);
 
-            sqlCommand.Parameters.AddWithValue("@stock",producto.Stock + numero);
+            sqlCommand.Parameters.AddWithValue("@stock",producto.Stock);
+            sqlCommand.ExecuteNonQuery();
 
         }
 
@@ -169,6 +186,36 @@ namespace CapaPersistencia.ADO_SQLServer
 
             sqlCommand.Parameters.AddWithValue("@stock", producto.Stock);
             sqlCommand.ExecuteNonQuery();
+        }
+
+        public List<Producto> listarProductosAlfabeticamente()
+        {
+            List<Producto> productos = new List<Producto>();
+
+            String query = "select producto.* from producto where producto.estado = 1 order by producto.nombre asc;";
+
+            SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
+            while (resultadoSQL.Read())
+            {
+                productos.Add(obtenerProducto(resultadoSQL));
+            }
+
+            return productos;
+        }
+
+        public List<Producto> listarProductosMasVendidos()
+        {
+            List<Producto> productos = new List<Producto>();
+
+            String query = "select producto.* from producto where producto.estado = 1 order by producto.esMasVendido desc;";
+
+            SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(query);
+            while (resultadoSQL.Read())
+            {
+                productos.Add(obtenerProducto(resultadoSQL));
+            }
+
+            return productos;
         }
     }
     

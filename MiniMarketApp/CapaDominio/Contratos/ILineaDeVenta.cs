@@ -16,6 +16,9 @@ namespace CapaDominio.Contratos
         LineaDeVenta buscarLineaDeVenta(long idLineaDeVenta);
         void editarLineaDeVenta(LineaDeVenta lineaDeVenta);
         void eliminarLineaDeVenta(long idLineaDeVenta);
-        List<LineaDeVenta> listarLineasDeVentaDelDia();
+        List<LineaDeVenta> listarLineasDeVentaDeUnaFecha(DateTime fecha);
+        List<LineaDeVenta> listarLineasDeVentaEntreFechas(DateTime fecha1,DateTime fecha2);
+        LineaDeVenta obtenerPivote(DateTime fecha);
+        LineaDeVenta obtenerPivoteEntreFechas(DateTime fecha1, DateTime fecha2);
     }
 }

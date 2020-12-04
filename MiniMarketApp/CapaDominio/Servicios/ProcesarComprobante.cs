@@ -18,15 +18,6 @@ namespace CapaDominio.Servicios
             return lineasDeVenta;
         }
 
-        public ComprobanteDePago procesarComprobante(ComprobanteDePago comprobanteDePago)
-        {
-            comprobanteDePago.calcularPrecioNeto();
-            comprobanteDePago.calcularIgv();
-            comprobanteDePago.calcularPrecioTotal();
-
-            return comprobanteDePago;
-        }
-
         public LineaDeVenta procesarLineaDeVenta(LineaDeVenta lineaDeVenta)
         {
             lineaDeVenta.calcularPrecioUnitario();
